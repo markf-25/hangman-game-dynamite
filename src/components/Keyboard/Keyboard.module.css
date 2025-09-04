@@ -1,0 +1,14 @@
+.keyboardWrapper {
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(2, auto);  
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 2px solid brown;
+    border-radius: 10px;
+    box-shadow: 20px 10px 30px rgba(0, 0, 0, 0.456);
+    height: 10rem;
+    width: 50vw;
+    padding: 5px;
+}
