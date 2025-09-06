@@ -7,3 +7,5 @@ const generateAlphabet = () => {
 };
 
 export const ALPHABET = generateAlphabet();
+
+export const MAXERRORS = 5

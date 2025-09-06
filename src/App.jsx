@@ -1,15 +1,11 @@
 import './App.css'
+import Game from "./components/Game/Game"
 
-import Word from "./components/Word/Word"
-import Keyboard from "./components/Keyboard/Keyboard"
 
 function App() {
 
-  const userTry = ["T","G","A"]
-
   return <>
-  <Word userTry={userTry}/> 
-  <Keyboard/>
+  <Game />
   </>
 }
 

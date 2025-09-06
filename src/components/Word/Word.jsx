@@ -1,17 +1,33 @@
+import {useContext, useEffect} from "react"
 import WordLetter from "../WordLetter/WordLetter"
 import styles from "./Word.module.css"
+import {GameContext} from "../../context/GameProvider"
+import { MAXERRORS } from "../../utils/constants.js"
 
-const Word = ({userTry}) => {
+const Word = ({errors}) => {
 
-    const prova = "GATTA"
-    const wordToGuess = [...prova]
+    const { word, userGuesses } = useContext(GameContext)
 
-    console.log("TRY", userTry)
+    const wordToGuess = [...word]
+
+    const wrongGuesses = userGuesses.filter(
+    (letter) => !wordToGuess.includes(letter)
+    )
+
+    const youLose = wrongGuesses.length === MAXERRORS
+
+    useEffect(() => {
+        if(youLose) {
+        console.log("PERSO")
+        /* todo FUNZIONE DI GAME OVER */
+    }
+    errors(wrongGuesses.length)
+    }, [userGuesses])
 
     return <>
     <div className={styles.word_wrapper}>
         {wordToGuess.map(letter => (
-            <WordLetter letter={letter} userTry={userTry}/>
+            <WordLetter letter={letter}/>
         ))}
     </div>
     </>

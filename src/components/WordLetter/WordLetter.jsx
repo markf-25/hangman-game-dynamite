@@ -1,10 +1,14 @@
+import { useContext } from "react"
 import styles from "./WordLetter.module.css";
+import {GameContext} from "../../context/GameProvider"
 
-const WordLetter = ({ letter, userTry }) => {
-  console.log("VALORI", letter, userTry);
+const WordLetter = ({ letter }) => {
+  
+  const { userGuesses } = useContext(GameContext)
+
   return (
     <>
-      {userTry.includes(letter) ? (
+      {userGuesses.includes(letter) ? (
         <div className={styles.letter_card}>{letter}</div>
       ) : (
         <div className={styles.letter_card}>X</div>
