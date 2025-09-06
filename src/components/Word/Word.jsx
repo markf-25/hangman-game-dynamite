@@ -11,16 +11,30 @@ const Word = ({errors}) => {
     const wordToGuess = [...word]
 
     const wrongGuesses = userGuesses.filter(
-    (letter) => !wordToGuess.includes(letter)
+    (letter) => letter !== " " && !wordToGuess.includes(letter)
     )
 
     const youLose = wrongGuesses.length === MAXERRORS
 
-    useEffect(() => {
-        if(youLose) {
-        console.log("PERSO")
-        /* todo FUNZIONE DI GAME OVER */
+    const allGuessed = word && wordToGuess.every(char => userGuesses.includes(char))
+
+    const yourTurnIsOver = () => {
+        if(youLose){
+            window.alert(`HAI PERSO, SCEMO! La parola era ${word}`)
+        }
+        if(allGuessed){
+            window.alert("HAI VINTO, MA RESTI SCEMO!")
+        }
+
+        window.location.reload();
+
+        //Mostrare se hai vinto o perso, poi salvare il punteggio, e caricare un'altra parola. Arrivati all'ultima parola, mostrare la classifica finale
     }
+
+    useEffect(() => {
+        if(youLose || allGuessed) {
+            yourTurnIsOver()
+        }
     errors(wrongGuesses.length)
     }, [userGuesses])
 

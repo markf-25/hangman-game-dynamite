@@ -14,7 +14,7 @@ const Game = () => {
       <Word errors={setErrors}/>
       <Keyboard />
       <p>ERRORI: {errors}</p>
-      {errors === MAXERRORS && <p>HAI PERSO</p>}
+      {errors === MAXERRORS && <p>HAI PERSO!</p>}
     </GameProvider>
     </>
 }
