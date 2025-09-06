@@ -1,8 +1,16 @@
-const WordLetter = ({letter, userTry}) => {
-    console.log("VALORI", letter, userTry)
-    return <>
-    {userTry.includes(letter)? <div>{letter}</div> : <div>X</div>}
-    </>
-}
+import styles from "./WordLetter.module.css";
 
-export default WordLetter
+const WordLetter = ({ letter, userTry }) => {
+  console.log("VALORI", letter, userTry);
+  return (
+    <>
+      {userTry.includes(letter) ? (
+        <div className={styles.letter_card}>{letter}</div>
+      ) : (
+        <div className={styles.letter_card}>X</div>
+      )}
+    </>
+  );
+};
+
+export default WordLetter;

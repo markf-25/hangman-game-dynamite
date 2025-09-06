@@ -1,14 +1,15 @@
 import WordLetter from "../WordLetter/WordLetter"
+import styles from "./Word.module.css"
 
 const Word = ({userTry}) => {
 
-    const prova = "gatta"
+    const prova = "GATTA"
     const wordToGuess = [...prova]
 
     console.log("TRY", userTry)
 
     return <>
-    <div className="blabla">
+    <div className={styles.word_wrapper}>
         {wordToGuess.map(letter => (
             <WordLetter letter={letter} userTry={userTry}/>
         ))}

@@ -5,7 +5,7 @@ import Keyboard from "./components/Keyboard/Keyboard"
 
 function App() {
 
-  const userTry = ["t","g", "a"]
+  const userTry = ["T","G","A"]
 
   return <>
   <Word userTry={userTry}/> 
