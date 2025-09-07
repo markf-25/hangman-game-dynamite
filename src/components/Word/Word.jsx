@@ -4,9 +4,9 @@ import styles from "./Word.module.css"
 import {GameContext} from "../../context/GameProvider"
 import { MAXERRORS } from "../../utils/constants.js"
 
-const Word = ({errors}) => {
+const Word = () => {
 
-    const { word, userGuesses } = useContext(GameContext)
+    const { word, userGuesses, setErrors } = useContext(GameContext)
 
     const wordToGuess = [...word]
 
@@ -35,7 +35,7 @@ const Word = ({errors}) => {
         if(youLose || allGuessed) {
             yourTurnIsOver()
         }
-    errors(wrongGuesses.length)
+    setErrors(wrongGuesses.length)
     }, [userGuesses])
 
     return <>
