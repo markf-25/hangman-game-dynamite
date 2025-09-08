@@ -1,8 +1,8 @@
 import useInput from "../../hooks/useInput"
 import { useDispatch } from "react-redux"
-import { setPlayer } from "../../reducers/player.slice.js"
+import { setPlayers } from "../../reducers/player.slice.js"
 
-const PlayerModal = ({player}) => {
+const PlayerModal = ({player, ready}) => {
 
     const dispatch = useDispatch()
 
@@ -15,11 +15,13 @@ const PlayerModal = ({player}) => {
         const payload = {
         id: player,
         username,
-        color: "red"
+        color: "red",
+        score: 0
         }
         
-        dispatch(setPlayer(payload))
+        dispatch(setPlayers(payload))
         console.log("Nuovo player aggiunto:", payload)
+        ready((prev) => prev+1)
     }
 
 return <>
@@ -31,6 +33,7 @@ return <>
           value={username}
           onChange={handleUsernameChange}
         />
+        <button type="submit">PRONTO!</button>
       </form>
     </div>
 </>

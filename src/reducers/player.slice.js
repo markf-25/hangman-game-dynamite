@@ -8,13 +8,20 @@ export const playerSlice = createSlice({
   name: "players",
   initialState,
   reducers: {
-    setPlayer: (state, action) => {
+    setPlayers: (state, action) => {
       state.players.push({
         id: action.payload.id,
         username: action.payload.username,
         color: action.payload.color,
-        score: 0,
+        score: action.payload.score,
       })
+    },
+    updatePlayer: (state, action) => {
+      const { id, score } = action.payload
+      const player = state.players.find(p => p.id === id)
+      if (player) {
+        player.score = score
+      }
     },
     clearPlayers: () => {
       return initialState
@@ -22,6 +29,9 @@ export const playerSlice = createSlice({
   },
 })
 
-export const { setPlayer, clearPlayers} = playerSlice.actions;
+export const { setPlayers, updatePlayer, clearPlayers} = playerSlice.actions;
 
-export const playerSelector = (state) => state.player;
+export const playersSelector = (state) => state.player;
+
+export const playerSelectorById = (id) => (state) =>
+  state.player.players.find(player => player.id === id);

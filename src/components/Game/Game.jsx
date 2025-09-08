@@ -9,7 +9,7 @@ const Game = () => {
     return <>
     <GameProvider>
       <Errors/>
-      <Word/>
+      <Word playerIndex={1}/>
       <Keyboard />
     </GameProvider>
     </>
