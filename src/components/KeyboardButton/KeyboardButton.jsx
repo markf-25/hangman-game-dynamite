@@ -1,12 +1,16 @@
 import styles from "./KeyboardButton.module.css"
 
-import { useContext, useState } from "react"
+import { useContext, useState, useEffect } from "react"
 import {GameContext} from "../../context/GameProvider"
 
 const KeyboardButton = ({letter}) => {
 
-    const { setUserGuesses } = useContext(GameContext)
+    const { reset, setUserGuesses } = useContext(GameContext)
     const [ alreadyPressed, setAlreadyPressed] = useState(false)
+
+    useEffect(()=>{
+        setAlreadyPressed(false)
+    },[reset])
 
     const userTry = () => {
         setUserGuesses(prev => [...prev, letter])

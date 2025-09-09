@@ -7,7 +7,7 @@ const Errors = () => {
     const {errors} = useContext(GameContext)
 
     return <>
-    <p>ERRORI: {errors}</p>
+    <p>ERRORI: {errors}/{MAXERRORS}</p>
     {errors === MAXERRORS && <p>HAI PERSO!</p>}
     </>
 }

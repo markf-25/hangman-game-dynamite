@@ -35,3 +35,7 @@ h3 {
 .ready_btn {
     width:fit-content;
 }
+
+.ready_btn:disabled {
+    cursor: default;
+}

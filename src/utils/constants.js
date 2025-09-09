@@ -8,4 +8,6 @@ const generateAlphabet = () => {
 
 export const ALPHABET = generateAlphabet();
 
+export const SELECTPLAYERS = [1, 2, 3, 4, 5]
+
 export const MAXERRORS = 5

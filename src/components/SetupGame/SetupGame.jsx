@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { clearPlayers } from "../../reducers/player.slice.js"
+import { SELECTPLAYERS } from "../../utils/constants.js"
 import PlayerModal from "../PlayerModal/PlayerModal"
 import styles from "./SetupGame.module.css"
 
@@ -15,6 +16,7 @@ const SetupGame = ({startTheGame}) => {
 
     useEffect(()=>{
         dispatch(clearPlayers())
+        setPlayerReady(0)
     },[])
 
      useEffect(()=>{
@@ -29,9 +31,20 @@ const SetupGame = ({startTheGame}) => {
     {!numPlayers.length && <div className={styles.setup_nplayers}>
         <h1>Quanti giocatori?</h1>
         <div className={styles.radio_btns}>
-            <button type="radio" value="1" onClick={()=>setNumPlayers(prev => [...prev, 1])}>1</button>
-            <button type="radio" value="2" onClick={()=>setNumPlayers(prev => [...prev, 1, 2])}>2</button>
-        </div>
+  {SELECTPLAYERS.map(num => (
+    <label key={num}>
+      <input
+        type="radio"
+        name="numPlayers"
+        value={num}
+        onChange={() =>
+          setNumPlayers(Array.from({ length: num }, (_, index) => index + 1))
+        }
+      />
+      {num}
+    </label>
+  ))}
+</div>
     </div>}
 
     {numPlayers.length ? (

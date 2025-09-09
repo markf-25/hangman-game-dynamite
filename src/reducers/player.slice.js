@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  players: []
+  players: [],
 }
 
 export const playerSlice = createSlice({
@@ -20,7 +20,7 @@ export const playerSlice = createSlice({
       const { id, score } = action.payload
       const player = state.players.find(p => p.id === id)
       if (player) {
-        player.score = score
+        player.score = player.score + score
       }
     },
     clearPlayers: () => {
@@ -31,7 +31,7 @@ export const playerSlice = createSlice({
 
 export const { setPlayers, updatePlayer, clearPlayers} = playerSlice.actions;
 
-export const playersSelector = (state) => state.player;
+export const playersSelector = (state) => state.player.players;
 
 export const playerSelectorById = (id) => (state) =>
   state.player.players.find(player => player.id === id);

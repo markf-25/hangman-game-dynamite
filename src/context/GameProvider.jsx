@@ -7,18 +7,17 @@ export function GameProvider({ children }) {
   const [ errors, setErrors ] = useState(0)
   const [word, setWord] = useState("");
 
+  const [reset, setReset] = useState(false)
+
   const fetchWord = async () => {
     const newWord = await getWord();
     setWord(newWord);
+    setReset(false)
   };
-
-  useEffect(() => {
-    fetchWord();
-  }, []);
 
   return (
     <GameContext.Provider
-      value={{ userGuesses, setUserGuesses, word, setWord, errors, setErrors }}
+      value={{ emptyChar, userGuesses, setUserGuesses, word, setWord, errors, setErrors, reset, setReset, fetchWord }}
     >
       {children}
     </GameContext.Provider>
