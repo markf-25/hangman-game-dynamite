@@ -1,6 +1,7 @@
 import useInput from "../../hooks/useInput"
 import { useDispatch } from "react-redux"
 import { setPlayers } from "../../reducers/player.slice.js"
+import styles from "./PlayerModal.module.css"
 
 const PlayerModal = ({player, ready}) => {
 
@@ -25,15 +26,16 @@ const PlayerModal = ({player, ready}) => {
     }
 
 return <>
-<div>
-      <p>Player {player}</p>
-      <form onSubmit={setupNewPlayer}>
+<div className={styles.player_modal}>
+      <h3>Player {player}</h3>
+      <form onSubmit={setupNewPlayer} className={styles.player_form}>
+        <label htmlFor={`username${player}`}>Username:</label>
         <input
-          name={`username${player}`}
+          id={`username${player}`}
           value={username}
           onChange={handleUsernameChange}
         />
-        <button type="submit">PRONTO!</button>
+        <button className={styles.ready_btn} type="submit">PRONTO!</button>
       </form>
     </div>
 </>
