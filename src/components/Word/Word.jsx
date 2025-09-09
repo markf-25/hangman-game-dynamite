@@ -71,6 +71,7 @@ console.log("LENGTATATATATTATA", playerId, playersArray.length)
     }, [userGuesses])
 
     return <>
+    <h3>è il turno di {currentPlayer.username}</h3>
     <div className={styles.word_wrapper}>
         {wordToGuess.map(letter => (
             <WordLetter letter={letter}/>
