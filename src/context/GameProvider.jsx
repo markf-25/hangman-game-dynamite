@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from "react";
+import { useSelector } from "react-redux"
 import { getWord } from "../services/word.service.js";
+import { playerSelectorById } from "../reducers/player.slice.js"
 
 export function GameProvider({ children }) {
   const emptyChar = " ";
@@ -9,6 +11,10 @@ export function GameProvider({ children }) {
 
   const [reset, setReset] = useState(false)
 
+  const [playerId, setPlayerId] = useState(1)
+
+  const currentPlayer = useSelector(playerSelectorById(playerId));
+
   const fetchWord = async () => {
     const newWord = await getWord();
     setWord(newWord);
@@ -17,7 +23,7 @@ export function GameProvider({ children }) {
 
   return (
     <GameContext.Provider
-      value={{ emptyChar, userGuesses, setUserGuesses, word, setWord, errors, setErrors, reset, setReset, fetchWord }}
+      value={{ emptyChar, userGuesses, setUserGuesses, currentPlayer, playerId, setPlayerId, word, setWord, errors, setErrors, reset, setReset, fetchWord }}
     >
       {children}
     </GameContext.Provider>

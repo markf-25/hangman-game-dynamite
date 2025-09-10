@@ -1,17 +1,16 @@
 import Errors from "../Errors/Errors"
 import Word from "../Word/Word"
 import Keyboard from "../Keyboard/Keyboard"
-
-import { GameProvider } from "../../context/GameProvider"
+import { useContext} from "react"
+import { GameContext } from "../../context/GameProvider"
 
 const Game = () => {
-
+  const {currentPlayer} = useContext(GameContext)
     return <>
-    <GameProvider>
+      <h3>è il turno di {currentPlayer.username}</h3>
       <Errors/>
       <Word/>
       <Keyboard />
-    </GameProvider>
     </>
 }
 
