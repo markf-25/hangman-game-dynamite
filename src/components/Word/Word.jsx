@@ -11,18 +11,12 @@ const Word = () => {
 
     const playersArray = useSelector(playersSelector)
 
-    const { word, emptyChar, userGuesses, setUserGuesses, currentPlayer, playerId, setPlayerId, setErrors, fetchWord, reset, setReset } = useContext(GameContext)
+    const { word, userGuesses, currentPlayer, playerId, setPlayerId, setErrors, newTurn } = useContext(GameContext)
+
 
     useEffect(() => {
-      setReset(true);
-      fetchWord();
+      newTurn()      
     }, [playerId]);
-
-    useEffect(() => {
-      console.log("RESET", reset);
-      setErrors(0);
-      setUserGuesses([emptyChar]);
-    }, [reset]);
 
     const wordToGuess = [...word]
 

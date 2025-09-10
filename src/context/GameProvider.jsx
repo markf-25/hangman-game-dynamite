@@ -18,12 +18,18 @@ export function GameProvider({ children }) {
   const fetchWord = async () => {
     const newWord = await getWord();
     setWord(newWord);
-    setReset(false)
   };
+
+  const newTurn = () => {
+    setErrors(0);
+    setUserGuesses([emptyChar]);
+    fetchWord();
+    console.log("DOPO FETCh", errors, userGuesses)
+  }
 
   return (
     <GameContext.Provider
-      value={{ emptyChar, userGuesses, setUserGuesses, currentPlayer, playerId, setPlayerId, word, setWord, errors, setErrors, reset, setReset, fetchWord }}
+      value={{ emptyChar, userGuesses, setUserGuesses, currentPlayer, playerId, setPlayerId, word, setWord, errors, setErrors, reset, setReset, newTurn }}
     >
       {children}
     </GameContext.Provider>

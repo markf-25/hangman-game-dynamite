@@ -1,9 +1,9 @@
-import { italianWord } from "../config.js"
+import { englishWord } from "../config.js"
 
 export const getWord = async () => {
     try {
 
-        const response = await fetch(`${italianWord}&words=1`, {
+        const response = await fetch(`${englishWord}&words=1`, {
             method: "GET",
             headers: {'Content-Type': 'application/json'},
         })
