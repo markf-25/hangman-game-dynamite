@@ -1,6 +1,7 @@
 import Errors from "../Errors/Errors"
 import Word from "../Word/Word"
 import Keyboard from "../Keyboard/Keyboard"
+import Scoreboard from "../Scoreboard/Scoreboard"
 import { useContext} from "react"
 import { GameContext } from "../../context/GameProvider"
 
@@ -11,6 +12,7 @@ const Game = () => {
       <h3>È il turno di {currentPlayer.username}</h3>
       <Word/>
       <Keyboard />
+      <Scoreboard/>
     </>
 }
 

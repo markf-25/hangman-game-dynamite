@@ -10,9 +10,15 @@ const SetupGame = ({startTheGame}) => {
     const dispatch = useDispatch()
     
     const [numPlayers, setNumPlayers] = useState([])
+    const [howManyWordsSelector, setHowManyWordsSelector] = useState(false)
     const [playerReady, setPlayerReady] = useState(0)
 
     const everyoneIsReady = numPlayers.length === playerReady
+
+    const playerSelector = (num) => {
+      setNumPlayers(Array.from({ length: num }, (_, index) => index + 1))
+      setHowManyWordsSelector(true)
+    }
 
     useEffect(()=>{
         dispatch(clearPlayers())
@@ -37,9 +43,7 @@ const SetupGame = ({startTheGame}) => {
         type="radio"
         name="numPlayers"
         value={num}
-        onChange={() =>
-          setNumPlayers(Array.from({ length: num }, (_, index) => index + 1))
-        }
+        onChange={() => playerSelector(num)}
       />
       {num}
     </label>
@@ -47,10 +51,16 @@ const SetupGame = ({startTheGame}) => {
 </div>
     </div>}
 
-    {numPlayers.length ? (
+    {numPlayers.length && howManyWordsSelector ? <button onClick={()=>setHowManyWordsSelector(false)}>CIAO</button>
+     : null}
+
+    {numPlayers.length && !howManyWordsSelector? (
+      <>
       <button type="button" form="player" className={styles.back_btn} onClick={() => setNumPlayers([])}>INDIETRO</button>
+      {numPlayers.map(player => (<PlayerModal player={player} ready={setPlayerReady}/>))}
+      </>
     ) : null}
-    {numPlayers.map(player => (<PlayerModal player={player} ready={setPlayerReady}/>))}
+    
 
     </div>
     </>

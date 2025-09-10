@@ -4,7 +4,7 @@ import { getWord } from "../services/word.service.js";
 import { playerSelectorById } from "../reducers/player.slice.js"
 
 export function GameProvider({ children }) {
-  const unrequiredChars = [" ", "'"];
+  const unrequiredChars = [" ", "'", "-"];
   const [userGuesses, setUserGuesses] = useState([...unrequiredChars]);
   const [ errors, setErrors ] = useState(0)
   const [word, setWord] = useState("");

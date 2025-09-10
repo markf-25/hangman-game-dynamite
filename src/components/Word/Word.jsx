@@ -11,17 +11,18 @@ const Word = () => {
 
     const playersArray = useSelector(playersSelector)
 
-    const { word, userGuesses, currentPlayer, playerId, setPlayerId, setErrors, newTurn } = useContext(GameContext)
+    const { unrequiredChars, word, userGuesses, currentPlayer, playerId, setPlayerId, setErrors, newTurn } = useContext(GameContext)
 
 
     useEffect(() => {
-      newTurn()      
+      newTurn()  
+      console.log("daveafasfasfda", userGuesses)    
     }, [playerId]);
 
     const wordToGuess = [...word]
 
     const wrongGuesses = userGuesses.filter(
-    (letter) => letter !== " " && !wordToGuess.includes(letter)
+    (letter) => !unrequiredChars.includes(letter) && !wordToGuess.includes(letter)
     )
 
     const youLose = wrongGuesses.length === MAXERRORS
@@ -29,7 +30,6 @@ const Word = () => {
     const allGuessed = word && wordToGuess.every(char => userGuesses.includes(char))
 
     const yourTurnIsOver = () => {
-        console.log("CURRENTID", playersArray, currentPlayer.id)
         if(youLose){
             window.alert(`PERSO! LA PAROLA ERA ${word}`)
            dispatch(updatePlayer({id: currentPlayer.id, score: -10}))
@@ -38,7 +38,7 @@ const Word = () => {
             window.alert(`VINTO!`)
             dispatch(updatePlayer({id: currentPlayer.id, score: 50}))
         }
-        console.log("LENGTATATATATTATA", playerId, playersArray.length)
+        
         if(currentPlayer.id < playersArray.length) {
             
             setPlayerId((prev) => prev+1)
