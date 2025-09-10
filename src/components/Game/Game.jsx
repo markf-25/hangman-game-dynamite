@@ -7,8 +7,8 @@ import { GameContext } from "../../context/GameProvider"
 const Game = () => {
   const {currentPlayer} = useContext(GameContext)
     return <>
-      <h3>è il turno di {currentPlayer.username}</h3>
       <Errors/>
+      <h3>È il turno di {currentPlayer.username}</h3>
       <Word/>
       <Keyboard />
     </>

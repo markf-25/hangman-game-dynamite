@@ -12,7 +12,7 @@ const WordLetter = ({ letter }) => {
       {userGuesses.includes(letter) ? (
         <div className={styles.letter_card}>{letter}</div>
       ) : (
-        <div className={styles.letter_card}>{!ALPHABET.includes(letter)? letter: "?"}</div>
+        <div className={styles.letter_card}>{!ALPHABET.includes(letter)? letter: "_"}</div>
       )}
     </>
   );

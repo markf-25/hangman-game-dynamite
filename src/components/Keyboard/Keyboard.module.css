@@ -6,10 +6,10 @@
     justify-content: center;
     gap: 0.5rem;
     border: 8px solid rgb(41, 41, 41);
-    background: radial-gradient(transparent 4%, rgb(27, 27, 27) 90%, rgb(21, 21, 21));
+    background: radial-gradient(rgb(47, 47, 47) 4%, rgb(27, 27, 27) 90%, rgb(21, 21, 21));
     box-shadow: 0px 14px 0px rgb(27, 27, 27);
     border-radius: 22px;
     height: 12rem;
-    width: 50vw;
-    padding: 5px;
+    width: fit-content;
+    padding: 1rem;
 }
