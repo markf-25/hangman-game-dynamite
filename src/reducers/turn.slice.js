@@ -4,7 +4,9 @@ const initialState = {
   totalPlayers: 0,
   currentPlayerId: 1,
   currentWordIndex: 0,
-  totalWords: 0
+  totalWords: 0,
+  totalReloads: 0,
+  reloadsLeft: 0
 }
 
 export const turnSlice = createSlice({
@@ -14,22 +16,28 @@ export const turnSlice = createSlice({
     setupGame: (state, action) =>{
     state.totalPlayers = action.payload.totalPlayers,
     state.totalWords = action.payload.totalWords
+
+    state.totalReloads = state.totalWords * state.totalPlayers
+    state.reloadsLeft = state.totalReloads
   console.log("CAIAGAGAGGASGAGAGAG", state.totalWords)
   },
     nextTurn: (state) => {
-      if (state.currentWordIndex < state.totalWords) {
+      if (state.reloadsLeft > 0) {
 
-              if (state.currentPlayerId < state.totalPlayers) {
+              if (state.totalPlayers > 1 && state.currentPlayerId < state.totalPlayers) {
                 state.currentPlayerId++
+                state.reloadsLeft--
                 console.log("QUI")
               } else {
                 state.currentWordIndex++
                 state.currentPlayerId = 1
+                state.reloadsLeft--
                 console.log("E INVECE QUI")
               }
       }
-      if (state.currentWordIndex === state.totalWords) {
+      if (state.reloadsLeft === 0) {
         console.log("PARTITA FINITA, NON CI SONO PAROLE")    
+        return
       }
 },
       clearGame: () => {
