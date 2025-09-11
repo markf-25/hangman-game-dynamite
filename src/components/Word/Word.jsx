@@ -5,19 +5,22 @@ import styles from "./Word.module.css"
 import { GameContext } from "../../context/GameProvider"
 import { MAXERRORS } from "../../utils/constants.js"
 import { updatePlayer, playersSelector } from "../../reducers/player.slice.js"
+import { turnSelector, nextTurn } from "../../reducers/turn.slice.js"
 
 const Word = () => {
     const dispatch = useDispatch()
 
     const playersArray = useSelector(playersSelector)
 
-    const { unrequiredChars, word, userGuesses, currentPlayer, playerId, setPlayerId, setErrors, newTurn } = useContext(GameContext)
+    const currentTurn = useSelector(turnSelector)
+
+    const { unrequiredChars, word, userGuesses, currentPlayer, setErrors, newTurn } = useContext(GameContext)
 
 
     useEffect(() => {
       newTurn()  
-      console.log("daveafasfasfda", userGuesses)    
-    }, [playerId]);
+      console.log("daveafasfasfda", currentTurn)    
+    }, [currentTurn.currentPlayerId]);
 
     const wordToGuess = [...word]
 
@@ -32,22 +35,13 @@ const Word = () => {
     const yourTurnIsOver = () => {
         if(youLose){
             window.alert(`PERSO! LA PAROLA ERA ${word}`)
-           dispatch(updatePlayer({id: currentPlayer.id, score: -10}))
+           dispatch(updatePlayer({id: currentTurn.currentPlayerId, score: -10}))
         }
-        else {
+        if(allGuessed) {
             window.alert(`VINTO!`)
-            dispatch(updatePlayer({id: currentPlayer.id, score: 50}))
+            dispatch(updatePlayer({id: currentTurn.currentPlayerId, score: 50}))
         }
-        
-        if(currentPlayer.id < playersArray.length) {
-            
-            setPlayerId((prev) => prev+1)
-            console.log("PLAYERID", playerId)
-        }
-
-        if(currentPlayer.id === playersArray.length){
-            window.alert(`FINITA!`)
-        }
+            dispatch(nextTurn(currentTurn))
 
         //Mostrare se hai vinto o perso, poi salvare il punteggio, e caricare un'altra parola. Arrivati all'ultima parola, mostrare la classifica finale
     }

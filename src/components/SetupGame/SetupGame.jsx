@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { clearPlayers } from "../../reducers/player.slice.js"
+import { setupGame, clearGame } from "../../reducers/turn.slice.js"
 import { SELECTPLAYERS } from "../../utils/constants.js"
 import PlayerModal from "../PlayerModal/PlayerModal"
 import styles from "./SetupGame.module.css"
@@ -22,6 +23,7 @@ const SetupGame = ({startTheGame}) => {
 
     useEffect(()=>{
         dispatch(clearPlayers())
+        dispatch(clearGame())
         setPlayerReady(0)
     },[])
 
@@ -31,6 +33,11 @@ const SetupGame = ({startTheGame}) => {
             startTheGame(true)
         } 
     },[playerReady])
+
+    const paroleparoleparole =()=>{
+      dispatch(setupGame({totalPlayers: numPlayers.length, totalWords: 2}))
+      setHowManyWordsSelector(false)
+    }
 
     return <>
     <div className={styles.setup_wrapper}>
@@ -51,7 +58,7 @@ const SetupGame = ({startTheGame}) => {
 </div>
     </div>}
 
-    {numPlayers.length && howManyWordsSelector ? <button onClick={()=>setHowManyWordsSelector(false)}>CIAO</button>
+    {numPlayers.length && howManyWordsSelector ? <button onClick={paroleparoleparole}>CIAO</button>
      : null}
 
     {numPlayers.length && !howManyWordsSelector? (
