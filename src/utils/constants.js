@@ -8,6 +8,18 @@ const generateAlphabet = () => {
 
 export const ALPHABET = generateAlphabet();
 
-export const SELECTPLAYERS = [1, 2, 3, 4, 5]
+export const MAXPLAYERSANDWORDS = [1, 2, 3, 4, 5]
 
 export const MAXERRORS = 5
+
+export const MAXPOINTS = 50
+export const PENALTY = 5
+
+export const score = (errors) => {
+  if(errors === MAXERRORS) {
+    return 0 - (PENALTY * errors)
+  }
+  else {
+    return MAXPOINTS - (PENALTY * errors)
+  }
+}

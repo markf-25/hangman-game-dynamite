@@ -1,19 +1,37 @@
 import './App.css'
 import Game from "./components/Game/Game"
 import SetupGame from "./components/SetupGame/SetupGame"
+import Scoreboard from "./components/Scoreboard/Scoreboard"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
+import { turnSelector } from "./reducers/turn.slice.js"
 
 
 function App() {
 
-  const [startTheGame, setStartTheGame] = useState(false)
+  const [gameStarted, setGameStarted] = useState(false)
+  const [gameOver, setGameOver] = useState(false)
+  const currentTurn = useSelector(turnSelector)
+  const reloadsLeft = currentTurn.reloadsLeft
+
+  useEffect(()=>{
+    if(gameStarted && !reloadsLeft) {
+      setGameOver(true)
+    }
+  },[reloadsLeft])
+
+  const newGame = () => {
+  setGameStarted(false)
+  setGameOver(false)
+  }
 
   return <>
-  {startTheGame? 
+  {gameStarted? 
   <Game />
   :
-  <SetupGame startTheGame={setStartTheGame}/>}
+  <SetupGame startTheGame={setGameStarted}/>}
+  {gameOver? <Scoreboard newGame={newGame}/> : null}
   </>
 }
 

@@ -5,7 +5,7 @@ import PlayerScore from "../PlayerScore/PlayerScore"
 import { useSelector } from "react-redux"
 import { playersSelector} from "../../reducers/player.slice.js"
 
-const Scoreboard = () => {
+const Scoreboard = ({newGame}) => {
 
     const playersArray = useSelector(playersSelector)
 
@@ -15,6 +15,7 @@ const Scoreboard = () => {
     <div className={styles.board}>
     {sortedPlayersArray.map(player => <PlayerScore player={player}/>)}
     </div>
+    {newGame? <button onClick={newGame}>RICOMINCIA?</button> : null}
     </>
 }
 

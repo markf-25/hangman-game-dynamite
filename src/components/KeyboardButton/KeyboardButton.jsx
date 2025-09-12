@@ -2,11 +2,12 @@ import styles from "./KeyboardButton.module.css"
 
 import { useContext, useState, useEffect } from "react"
 import { useSelector } from "react-redux"
-import {GameContext} from "../../context/GameProvider"
+import { GameContext } from "../../context/GameProvider"
 import { turnSelector } from "../../reducers/turn.slice.js"
+
 const KeyboardButton = ({letter}) => {
 
-    const { currentPlayer, setUserGuesses } = useContext(GameContext)
+    const { setUserGuesses } = useContext(GameContext)
     const [ alreadyPressed, setAlreadyPressed] = useState(false)
 
     const currentTurn = useSelector(turnSelector)
