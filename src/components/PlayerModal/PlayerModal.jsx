@@ -4,7 +4,8 @@ import { useDispatch } from "react-redux"
 import { setPlayers } from "../../reducers/player.slice.js"
 import { COLORS } from "../../utils/constants.js"
 import styles from "./PlayerModal.module.css"
-
+import "wired-elements"
+import { useRef } from "react"
 import SketchWrapper from "../SketchWrapper/SketchWrapper"
 import SketchButton from "../SketchButton/SketchButton"
 
@@ -12,10 +13,23 @@ const PlayerModal = ({player, ready}) => {
 
     const dispatch = useDispatch()
 
+    const radioRefs = useRef({})
+
     const {value: username, handleChange: handleUsernameChange } = useInput(`Player ${player}`)
 
     const [isDisabled, setIsDisabled] = useState(false)
     const [color, setColor] = useState("#A3C4FF")
+
+     useEffect(() => {
+      // Aggiorna manualmente la proprietà checked
+      COLORS.forEach(singleColor => {
+        const ref = radioRefs.current[singleColor]
+        if (ref) {
+          ref.checked = (color === singleColor)
+        }
+      })
+    }, [color])
+  
 
     const setupNewPlayer = (e) => {
 
@@ -46,14 +60,26 @@ return <>
           id={`username${player}`}
           value={username}
           onChange={handleUsernameChange}
+          style={{ alignSelf : "flex-start" }}
         />
         <label htmlFor={`color${player}`}>Scegli un colore:</label>
-        {COLORS.map(singleColor => <button className={styles.colorButton}
-         id={`color${player}`}
-         type="button"
-         style={{ backgroundColor: singleColor }}
-          value={singleColor}
-          onClick={()=> setColor(singleColor)}/>)}
+<div className={styles.color_container}>
+  
+  {COLORS.map(singleColor => (
+    
+    <wired-radio
+      key={singleColor}
+      id={`color${player}-${singleColor}`}
+      name={`color${player}`}
+      ref={el => radioRefs.current[singleColor] = el}
+      checked={color === singleColor}
+      style={{ "--wired-radio-icon-color" : singleColor, margin: "0 8px" }}
+      onClick={() => setColor(singleColor)}
+      className={styles.colorButton}
+    />
+  ))}
+  
+</div>
 
         <SketchButton type="submit" disabled={isDisabled} text="Pronto!"/>
       </form>
