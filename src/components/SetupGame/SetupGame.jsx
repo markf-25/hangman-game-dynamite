@@ -7,6 +7,9 @@ import PlayerModal from "../PlayerModal/PlayerModal"
 import styles from "./SetupGame.module.css"
 
 import SketchWrapper from "../SketchWrapper/SketchWrapper"
+import SketchButton from "../SketchButton/SketchButton"
+
+import "wired-elements"
 
 const SetupGame = ({startTheGame}) => {
 
@@ -44,7 +47,6 @@ const SetupGame = ({startTheGame}) => {
     },[playerReady])
 
     return <>
-    
     {(!numPlayers.length || !howManyWords) && 
     <SketchWrapper fill={wrapperColor}>
       <div className={styles.setup_nplayers}>
@@ -52,7 +54,7 @@ const SetupGame = ({startTheGame}) => {
         <div className={styles.radio_btns}>
   {MAXPLAYERSANDWORDS.map(num => (
     <label key={num}>
-      <input
+      <wired-checkbox
         type="radio"
         name="numPlayers"
         value={num}
@@ -66,7 +68,7 @@ const SetupGame = ({startTheGame}) => {
         <div className={styles.radio_btns}>
   {MAXPLAYERSANDWORDS.map(num => (
     <label key={num}>
-      <input
+      <wired-checkbox
         type="radio"
         name="numWords"
         value={num}
@@ -85,7 +87,7 @@ const SetupGame = ({startTheGame}) => {
     {numPlayers.length > 0 && howManyWords > 0 && (
       
     <div className={styles.modalContainer}>
-      <button type="button" form="player" className={styles.back_btn} onClick={resetSetup}>INDIETRO</button>
+      <SketchButton type="button" form="player" onClick={resetSetup} text="Indietro"/>
       <div className={styles.playerModalContainer}>
       {numPlayers.map(player => (<PlayerModal key={player} player={player} ready={setPlayerReady}/>))}
       </div>

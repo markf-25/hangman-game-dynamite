@@ -15,7 +15,7 @@ const PlayerModal = ({player, ready}) => {
     const {value: username, handleChange: handleUsernameChange } = useInput(`Player ${player}`)
 
     const [isDisabled, setIsDisabled] = useState(false)
-    const [color, setColor] = useState("blue")
+    const [color, setColor] = useState("#A3C4FF")
 
     const setupNewPlayer = (e) => {
 
@@ -42,7 +42,7 @@ return <>
       <h3>Player {player}</h3>
       <form onSubmit={setupNewPlayer} className={styles.player_form}>
         <label htmlFor={`username${player}`}>Username:</label>
-        <input
+        <wired-input
           id={`username${player}`}
           value={username}
           onChange={handleUsernameChange}
@@ -54,6 +54,7 @@ return <>
          style={{ backgroundColor: singleColor }}
           value={singleColor}
           onClick={()=> setColor(singleColor)}/>)}
+
         <SketchButton type="submit" disabled={isDisabled} text="Pronto!"/>
       </form>
     </div>

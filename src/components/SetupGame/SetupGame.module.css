@@ -1,6 +1,11 @@
 .modalContainer {
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.modalContainer button {
+  width: fit-content;
 }
 
 .playerModalContainer {

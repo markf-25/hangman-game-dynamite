@@ -22,7 +22,13 @@ const generateNonAlphabetChars = () => {
 
 export const UNREQUIRED_CHARS = generateNonAlphabetChars();
 
-export const COLORS = ["red", "blue", "yellow", "green", "violet"]
+export const COLORS = [
+  "#FFA3A3", // rosso pastello
+  "#FFF5A3", // giallo pastello
+  "#A3C4FF", // blu pastello
+  "#A3FFC9", // verde pastello
+  "#D3A3FF"  // violetto pastello
+]
 
 export const MAXPLAYERSANDWORDS = [1, 2, 3, 4, 5]
 
