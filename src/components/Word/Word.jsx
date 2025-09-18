@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux"
 import WordLetter from "../WordLetter/WordLetter"
 import styles from "./Word.module.css"
 import { GameContext } from "../../context/GameProvider"
-import { MAXERRORS, score } from "../../utils/constants.js"
+import { UNREQUIRED_CHARS, MAXERRORS, score } from "../../utils/constants.js"
 import { updatePlayer } from "../../reducers/player.slice.js"
 import { nextTurn } from "../../reducers/turn.slice.js"
 
@@ -12,7 +12,7 @@ const Word = ({currentTurn, currentPlayerId}) => {
 
     const reloadsLeft = currentTurn.reloadsLeft
 
-    const { unrequiredChars, word, userGuesses, setErrors, newTurn } = useContext(GameContext)
+    const { word, userGuesses, setErrors, newTurn } = useContext(GameContext)
 
     useEffect(() => {
       newTurn()     
@@ -21,7 +21,7 @@ const Word = ({currentTurn, currentPlayerId}) => {
     const wordToGuess = [...word]
 
     const wrongGuesses = userGuesses.filter(
-    (letter) => !unrequiredChars.includes(letter) && !wordToGuess.includes(letter)
+    (letter) => !UNREQUIRED_CHARS.includes(letter) && !wordToGuess.includes(letter)
     )
 
     const youLose = wrongGuesses.length === MAXERRORS

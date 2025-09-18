@@ -8,6 +8,22 @@ const generateAlphabet = () => {
 
 export const ALPHABET = generateAlphabet();
 
+const generateNonAlphabetChars = () => {
+  const chars = [];
+  // Tutti i caratteri ASCII stampabili (32-126)
+  for (let i = 32; i <= 126; i++) {
+    const char = String.fromCharCode(i);
+    if (!ALPHABET.includes(char)) {
+      chars.push(char);
+    }
+  }
+  return chars;
+};
+
+export const UNREQUIRED_CHARS = generateNonAlphabetChars();
+
+export const COLORS = ["red", "blue", "yellow", "green", "violet"]
+
 export const MAXPLAYERSANDWORDS = [1, 2, 3, 4, 5]
 
 export const MAXERRORS = 5

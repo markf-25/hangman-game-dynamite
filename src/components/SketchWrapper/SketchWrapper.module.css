@@ -1,0 +1,21 @@
+.container {
+  display: inline-block; /* si restringe ai figli */
+  position: relative;    /* per posizionare l'SVG assoluto */
+  padding: 2rem;
+  margin: 2rem;
+}
+
+.svg {
+  position: absolute; /* resta dietro */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  padding: 0
+}
+
+.container > *:not(.svg) {
+  position: relative;
+  z-index: 1; /* i children sopra */
+}

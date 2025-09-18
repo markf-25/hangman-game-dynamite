@@ -2,10 +2,10 @@ import { createContext, useState } from "react";
 import { useSelector } from "react-redux"
 import { getWord } from "../services/word.service.js";
 import { playerSelectorById } from "../reducers/player.slice.js"
+import { UNREQUIRED_CHARS } from "../utils/constants.js"
 
 export function GameProvider({ children }) {
-  const unrequiredChars = [" ", "'", "-"];
-  const [userGuesses, setUserGuesses] = useState([...unrequiredChars]);
+  const [userGuesses, setUserGuesses] = useState([...UNREQUIRED_CHARS]);
   const [ errors, setErrors ] = useState(0)
   const [word, setWord] = useState("");
 
@@ -29,13 +29,13 @@ export function GameProvider({ children }) {
 
   const newTurn = () => {
     setErrors(0);
-    setUserGuesses([...unrequiredChars]);
+    setUserGuesses([...UNREQUIRED_CHARS]);
     fetchWord();
   }
 
   return (
     <GameContext.Provider
-      value={{ unrequiredChars, userGuesses, setUserGuesses, currentPlayer, playerId, setPlayerId, word, setWord, errors, setErrors, reset, setReset, newTurn }}
+      value={{ userGuesses, setUserGuesses, currentPlayer, playerId, setPlayerId, word, setWord, errors, setErrors, reset, setReset, newTurn }}
     >
       {children}
     </GameContext.Provider>

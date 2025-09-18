@@ -6,7 +6,11 @@ import { MAXPLAYERSANDWORDS } from "../../utils/constants.js"
 import PlayerModal from "../PlayerModal/PlayerModal"
 import styles from "./SetupGame.module.css"
 
+import SketchWrapper from "../SketchWrapper/SketchWrapper"
+
 const SetupGame = ({startTheGame}) => {
+
+  const wrapperColor = "rgba(255, 228, 196, 0.774)"
 
     const dispatch = useDispatch()
     
@@ -40,8 +44,10 @@ const SetupGame = ({startTheGame}) => {
     },[playerReady])
 
     return <>
-    <div className={styles.setup_wrapper}>
-    {(!numPlayers.length || !howManyWords) && <div className={styles.setup_nplayers}>
+    
+    {(!numPlayers.length || !howManyWords) && 
+    <SketchWrapper fill={wrapperColor}>
+      <div className={styles.setup_nplayers}>
         <h1>Quanti giocatori?</h1>
         <div className={styles.radio_btns}>
   {MAXPLAYERSANDWORDS.map(num => (
@@ -70,17 +76,21 @@ const SetupGame = ({startTheGame}) => {
     </label>
   ))}
 </div>
-    </div>}
+    </div>
+    </SketchWrapper>
+    }
 
-    {numPlayers.length > 0 && howManyWords > 0 && (
-    <>
-      <button type="button" form="player" className={styles.back_btn} onClick={resetSetup}>INDIETRO</button>
-      {numPlayers.map(player => (<PlayerModal key={player} player={player} ready={setPlayerReady}/>))}
-      </>
-    )}
     
 
-    </div>
+    {numPlayers.length > 0 && howManyWords > 0 && (
+      
+    <div className={styles.modalContainer}>
+      <button type="button" form="player" className={styles.back_btn} onClick={resetSetup}>INDIETRO</button>
+      <div className={styles.playerModalContainer}>
+      {numPlayers.map(player => (<PlayerModal key={player} player={player} ready={setPlayerReady}/>))}
+      </div>
+      </div>
+    )}
     </>
 }
 

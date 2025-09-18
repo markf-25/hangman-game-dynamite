@@ -39,3 +39,8 @@ h3 {
 .ready_btn:disabled {
     cursor: default;
 }
+
+.colorButton {
+    height: 30px;
+    width: 30px;
+}
