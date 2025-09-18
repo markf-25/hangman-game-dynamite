@@ -17,7 +17,6 @@ const Game = () => {
       <Errors/>
       <Word currentTurn={currentTurn} currentPlayerId={currentPlayerId}/>
       <Keyboard />
-      <Scoreboard/>
     </>
 }
 

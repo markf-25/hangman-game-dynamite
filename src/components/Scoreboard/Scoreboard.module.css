@@ -1,4 +1,6 @@
 .board {
     display: flex;
     flex-direction: column;
+    width: 20rem;
+    padding-right: 1.5rem;
 }
