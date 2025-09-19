@@ -36,7 +36,8 @@ export const turnSlice = createSlice({
               }
       }
       if (state.reloadsLeft === 0) {
-        console.log("PARTITA FINITA, NON CI SONO PAROLE")  
+        console.log("PARTITA FINITA, NON CI SONO PAROLE")
+        
       }
 },
       clearGame: () => {

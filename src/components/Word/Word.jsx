@@ -1,6 +1,8 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import WordLetter from "../WordLetter/WordLetter"
+import SketchDialog from "../SketchDialog/SketchDialog"
+import SketchButton from "../SketchButton/SketchButton"
 import styles from "./Word.module.css"
 import { GameContext } from "../../context/GameProvider"
 import { UNREQUIRED_CHARS, MAXERRORS, score } from "../../utils/constants.js"
@@ -13,6 +15,9 @@ const Word = ({currentTurn, currentPlayerId}) => {
     const reloadsLeft = currentTurn.reloadsLeft
 
     const { word, userGuesses, setErrors, newTurn } = useContext(GameContext)
+
+    const [winOrLose, setWinOrLose] = useState(false)
+    const [message, setMessage] = useState("")
 
     useEffect(() => {
       newTurn()     
@@ -30,15 +35,15 @@ const Word = ({currentTurn, currentPlayerId}) => {
 
     const yourTurnIsOver = () => {
         if(youLose){
-            window.alert(`PERSO! LA PAROLA ERA ${word}`)
+            setMessage(`NON HAI INDOVINATO! La parola era ${word}`)
+            
         }
         if(allGuessed) {
-            window.alert(`VINTO!`)
+            setMessage("HAI INDOVINATO!")
         }
+            setWinOrLose(true)
             dispatch(updatePlayer({id: currentPlayerId, score: score(wrongGuesses.length)}))
             dispatch(nextTurn(currentTurn))
-
-        //Mostrare se hai vinto o perso, poi salvare il punteggio, e caricare un'altra parola. Arrivati all'ultima parola, mostrare la classifica finale
     }
 
     useEffect(() => {
@@ -54,6 +59,10 @@ const Word = ({currentTurn, currentPlayerId}) => {
             <WordLetter letter={letter}/>
         ))}
     </div>
+    <SketchDialog isOpen={winOrLose}>
+        <p>{message}</p>
+        <SketchButton text="Ok, ok..." onClick={()=>setWinOrLose(false)}/>
+    </SketchDialog>
     </>
 }
 

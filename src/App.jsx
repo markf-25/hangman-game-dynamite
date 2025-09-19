@@ -3,6 +3,7 @@ import Game from "./components/Game/Game"
 import SetupGame from "./components/SetupGame/SetupGame"
 import Scoreboard from "./components/Scoreboard/Scoreboard"
 import SketchButton from './components/SketchButton/SketchButton'
+import SketchDialog from "./components/SketchDialog/SketchDialog"
 import { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
 import { turnSelector } from "./reducers/turn.slice.js"
@@ -31,12 +32,12 @@ function App() {
   return <>
   {gameStarted? <>
   <SketchButton style={{position: "fixed", top:"3rem", left:"2rem"}} text="punteggi" onClick={()=>setShowScores(true)}/>
-  <wired-dialog open={showScores}>
-    <div style={{display: "flex", flexDirection: "column", alignItems: "center", gap: "1rem", padding: "1rem"}}>
+    
+  <SketchDialog isOpen={gameOver}>
     <Scoreboard />
-  <SketchButton text="bruh" style={{"align-self": "center"}}onClick={()=>setShowScores(false)}/>
-    </div>
-  </ wired-dialog>
+  <SketchButton text="bruh" style={{"align-self": "center"}}onClick={()=>gameOver? setGameOver(false) : setShowScores(false)}/>
+    </SketchDialog>
+
   <Game />
   </>
   :
