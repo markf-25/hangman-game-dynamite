@@ -89,8 +89,6 @@ return <>
           onClick={()=> setColor(singleColor)}/>)}
   
 </div>
-
-
         <SketchButton fill="white" className={styles.ready_btn} type="submit" disabled={isDisabled} text="Pronto!"/>
       </form>
     </div>

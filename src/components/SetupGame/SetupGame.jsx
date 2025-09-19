@@ -92,7 +92,9 @@ const playerSelector = (num) => {
     {numPlayers.length > 0 && howManyWords > 0 && (
       
     <div className={styles.modalContainer}>
+      <div className={styles.lamadonna}>
       <SketchButton fill="bisque" className={styles.back_btn} type="button" form="player" onClick={resetSetup} text="Indietro"/>
+      </div>
       <div className={styles.playerModalContainer}>
       {numPlayers.map(player => (<PlayerModal key={player} player={player} ready={setPlayerReady}/>))}
       </div>
