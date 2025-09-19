@@ -23,9 +23,12 @@ const SetupGame = ({startTheGame}) => {
 
     const everyoneIsReady = numPlayers.length === playerReady
 
-    const playerSelector = (num) => {
-      setNumPlayers(Array.from({ length: num }, (_, index) => index + 1))
-    }
+    const [selectedPlayers, setSelectedPlayers] = useState(null);
+
+const playerSelector = (num) => {
+  setSelectedPlayers(num);
+  setNumPlayers(Array.from({ length: num }, (_, index) => index + 1));
+};
 
     const resetSetup = () =>{
         setPlayerReady(0)
@@ -54,9 +57,10 @@ const SetupGame = ({startTheGame}) => {
         <div className={styles.radio_btns}>
   {MAXPLAYERSANDWORDS.map(num => (
     <label key={num}>
-      <wired-checkbox
+      <wired-radio
         type="radio"
         name="numPlayers"
+        checked={selectedPlayers === num}
         value={num}
         onChange={() => playerSelector(num)}
       />
@@ -87,7 +91,7 @@ const SetupGame = ({startTheGame}) => {
     {numPlayers.length > 0 && howManyWords > 0 && (
       
     <div className={styles.modalContainer}>
-      <SketchButton type="button" form="player" onClick={resetSetup} text="Indietro"/>
+      <SketchButton fill="bisque" className={styles.back_btn} type="button" form="player" onClick={resetSetup} text="Indietro"/>
       <div className={styles.playerModalContainer}>
       {numPlayers.map(player => (<PlayerModal key={player} player={player} ready={setPlayerReady}/>))}
       </div>

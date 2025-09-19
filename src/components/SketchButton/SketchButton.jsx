@@ -1,13 +1,12 @@
+import SketchWrapper from "../SketchWrapper/SketchWrapper"
 import styles from "./SketchButton.module.css"
 
-const SketchButton = ({text, ...props}) => {
-    return <>
-    <button className={styles.button} {...props}>
-    <wired-button>
-        {text}
-    </wired-button>
-    </button>
-    </>
+const SketchButton = ({text, fill, shape,...props})=> {
+return <>
+<SketchWrapper fill={fill} shape={shape}>
+    <button {...props}>{text}</button>
+</SketchWrapper>
+</>
 }
 
 export default SketchButton

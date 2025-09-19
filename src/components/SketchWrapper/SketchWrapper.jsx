@@ -3,6 +3,7 @@ import rough from "roughjs";
 import styles from "./SketchWrapper.module.css"
 
 const SketchWrapper = ({
+  shape,
   children,
   reload,
   stroke = "black",
@@ -11,26 +12,53 @@ const SketchWrapper = ({
   const svgRef = useRef(null);
 
   useEffect(() => {
-    const svg = svgRef.current;
-    const rc = rough.svg(svg);
+  const svg = svgRef.current;
+  const rc = rough.svg(svg);
 
-    // Pulisce prima di ridisegnare
-    while (svg.firstChild) svg.removeChild(svg.firstChild);
+  // Pulisce prima di ridisegnare
+  while (svg.firstChild) svg.removeChild(svg.firstChild);
 
+  let node;
+
+  if (shape) {
+     // Cerchio sketchato
+    const r = Math.min(svg.clientWidth, svg.clientHeight) / 2 - 10;
+    node = rc.circle(
+      svg.clientWidth / 2,
+      svg.clientHeight / 2,
+      2 * r,
+      {
+        stroke,
+        strokeWidth: 2,
+        roughness: 2.5,
+        bowing: 3,
+        fill,
+        fillStyle: "hachure",
+        hachureGap: 2,
+      }
+    );
+  } else {
     // Rettangolo sketchato
-    const node = rc.rectangle(5, 5, svg.clientWidth - 10, svg.clientHeight - 10, {
-      stroke,
-  strokeWidth: 2,
-  roughness: 2.5,
-  bowing: 3,
-  fill,
-  fillStyle: "hachure",
-  hachureGap: 2
-    });
+    node = rc.rectangle(
+      5,
+      5,
+      svg.clientWidth - 10,
+      svg.clientHeight - 10,
+      {
+        stroke,
+        strokeWidth: 2,
+        roughness: 2.5,
+        bowing: 3,
+        fill,
+        fillStyle: "hachure",
+        hachureGap: 2,
+      }
+    );
+  }
 
-    svg.appendChild(node);
+  if (node) svg.appendChild(node);
 
-  }, [stroke, fill, reload]);
+}, [fill, stroke, reload]);
 
   return <>
     <div className={styles.container}>

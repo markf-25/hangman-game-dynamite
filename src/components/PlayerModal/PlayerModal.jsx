@@ -20,6 +20,12 @@ const PlayerModal = ({player, ready}) => {
     const [isDisabled, setIsDisabled] = useState(false)
     const [color, setColor] = useState("#A3C4FF")
 
+    const getFill = (singleColor) => {
+  if (isDisabled && singleColor === color) return singleColor;
+  if (isDisabled) return "grey";
+  return singleColor;
+};
+
      useEffect(() => {
       // Aggiorna manualmente la proprietà checked
       COLORS.forEach(singleColor => {
@@ -55,6 +61,7 @@ return <>
 <div className={styles.player_modal}>
       <h3>Player {player}</h3>
       <form onSubmit={setupNewPlayer} className={styles.player_form}>
+        <div className={styles.player_name}>
         <label htmlFor={`username${player}`}>Username:</label>
         <wired-input
           id={`username${player}`}
@@ -62,26 +69,23 @@ return <>
           onChange={handleUsernameChange}
           style={{ alignSelf : "flex-start" }}
         />
-        <label htmlFor={`color${player}`}>Scegli un colore:</label>
+        </div>
+        <label className={styles.color_label} htmlFor={`color${player}`}>Scegli un colore:</label>
 <div className={styles.color_container}>
   
-  {COLORS.map(singleColor => (
-    
-    <wired-radio
-      key={singleColor}
-      id={`color${player}-${singleColor}`}
-      name={`color${player}`}
-      ref={el => radioRefs.current[singleColor] = el}
-      checked={color === singleColor}
-      style={{ "--wired-radio-icon-color" : singleColor, margin: "0 8px" }}
-      onClick={() => setColor(singleColor)}
-      className={styles.colorButton}
-    />
-  ))}
+  {COLORS.map(singleColor => <SketchButton className={styles.colorButton}
+         id={`color${player}`}
+         type="button"
+          value={singleColor}
+          shape="circle"
+          fill={getFill(singleColor)}
+          disabled={isDisabled}
+          onClick={()=> setColor(singleColor)}/>)}
   
 </div>
 
-        <SketchButton type="submit" disabled={isDisabled} text="Pronto!"/>
+
+        <SketchButton fill="white" className={styles.ready_btn} type="submit" disabled={isDisabled} text="Pronto!"/>
       </form>
     </div>
     </SketchWrapper>

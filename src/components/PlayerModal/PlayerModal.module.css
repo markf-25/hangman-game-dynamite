@@ -2,9 +2,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border-radius: 20px;
-    padding: 1rem 2rem;
-    width: fit-content;
+    width: 370px;
+    padding: 10px;
     gap: 1rem;
     background-color: rgba(250, 250, 250, 0.156);
 }
@@ -23,20 +22,21 @@ h3 {
     justify-content: center;
     align-items: center;
     gap: 1rem;
-}
-
-.player_form label {
-    align-self: flex-start;
     color: rgb(93, 93, 93);
 }
 
-.player_form input {
-    border-radius: 5px;
-    padding: 2px;
+.player_name {
+display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
 }
 
 .ready_btn {
     width:fit-content;
+    margin: -15px;
+    background: transparent;
 }
 
 .ready_btn:disabled {
@@ -46,11 +46,22 @@ h3 {
 .color_container{
     display: flex;
     flex-direction: row;
-    gap: 1rem;
-    background-color: rgba(255, 255, 255, 0.956);
+    justify-content: center;
+    width: 500px;
+    flex-wrap: wrap;
+    background-color: transparent;
 }
+
+.color_label {
+    align-self: flex-start;
+}
+
 .colorButton {
     height: 30px;
     width: 30px;
     border-radius: 50%;
+    background: none;
+}
+.colorButton:disabled {
+cursor: default;
 }
