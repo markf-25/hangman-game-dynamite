@@ -6,7 +6,7 @@ const SketchWrapper = ({
   shape,
   children,
   reload,
-  stroke = "black",
+  stroke,
   fill
 }) => {
   const svgRef = useRef(null);
@@ -22,7 +22,7 @@ const SketchWrapper = ({
 
   if (shape) {
      // Cerchio sketchato
-    const r = Math.min(svg.clientWidth, svg.clientHeight) / 2 - 10;
+    const r = Math.min(svg.clientWidth, svg.clientHeight) / 2 - 13;
     node = rc.circle(
       svg.clientWidth / 2,
       svg.clientHeight / 2,
@@ -45,7 +45,7 @@ const SketchWrapper = ({
       svg.clientWidth - 10,
       svg.clientHeight - 10,
       {
-        stroke,
+        stroke: "black",
         strokeWidth: 2,
         roughness: 2.5,
         bowing: 3,

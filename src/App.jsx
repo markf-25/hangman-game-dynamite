@@ -22,27 +22,34 @@ function App() {
     if(gameStarted && !reloadsLeft) {
       setGameOver(true)
     }
+    console.log("le robe poi", gameStarted, gameOver)
   },[reloadsLeft])
 
   const newGame = () => {
+    console.log("le robe all'inizio", gameStarted, gameOver)
   setGameStarted(false)
   setGameOver(false)
+    console.log("le robe all'inizio pt 2", gameStarted, gameOver)
   }
 
   return <>
   {gameStarted? <>
-  <SketchButton style={{position: "fixed", top:"3rem", left:"2rem"}} text="punteggi" onClick={()=>setShowScores(true)}/>
+  <SketchButton style={{position: "fixed", top:"3rem", left:"2rem"}} text="punteggi" onClick={()=>setShowScores(true)}/> 
     
-  <SketchDialog isOpen={gameOver}>
-    <Scoreboard />
-  <SketchButton text="bruh" style={{"align-self": "center"}}onClick={()=>gameOver? setGameOver(false) : setShowScores(false)}/>
+    <SketchDialog isOpen={showScores}>
+      <Scoreboard />
+      <hr/>
+      <SketchButton text="OK" fill="bisque" style={{alignSelf: "center", background: "none", padding: "0px 12px"}}onClick={()=> setShowScores(false)}/>
     </SketchDialog>
 
-  <Game />
+    <Game />
   </>
   :
-  <SetupGame startTheGame={setGameStarted}/>}
-  {gameOver? <Scoreboard newGame={newGame}/> : null}
+    <SetupGame startTheGame={setGameStarted} />}
+    {gameOver && 
+      <SketchDialog isOpen={true}>
+        <Scoreboard newGame={newGame} />
+      </SketchDialog>}
   </>
 }
 

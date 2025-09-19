@@ -1,9 +1,9 @@
 import SketchWrapper from "../SketchWrapper/SketchWrapper"
 import styles from "./SketchButton.module.css"
 
-const SketchButton = ({text, fill, shape,...props})=> {
+const SketchButton = ({text, stroke, fill, shape,...props})=> {
 return <>
-<SketchWrapper fill={fill} shape={shape}>
+<SketchWrapper fill={fill} shape={shape} stroke={stroke || "black"}>
     <button {...props}>{text}</button>
 </SketchWrapper>
 </>

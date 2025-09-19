@@ -1,7 +1,6 @@
 import Errors from "../Errors/Errors"
 import Word from "../Word/Word"
 import Keyboard from "../Keyboard/Keyboard"
-import Scoreboard from "../Scoreboard/Scoreboard"
 import PlayerScore from "../PlayerScore/PlayerScore"
 import { useSelector} from "react-redux"
 import { playerSelectorById } from "../../reducers/player.slice.js"

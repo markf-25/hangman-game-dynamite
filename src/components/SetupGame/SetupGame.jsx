@@ -43,6 +43,7 @@ const playerSelector = (num) => {
 
      useEffect(()=>{
         console.log("PLAYERREADY", playerReady)
+        console.log("tot parole", howManyWords)
          if(playerReady > 0 && everyoneIsReady){
             dispatch(setupGame({totalPlayers: numPlayers.length, totalWords: howManyWords}))
             startTheGame(true)

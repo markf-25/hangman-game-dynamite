@@ -26,6 +26,11 @@ const PlayerModal = ({player, ready}) => {
   return singleColor;
 };
 
+  const getStroke = (singleColor) => {
+    if (singleColor === color) return "white";
+    return "transparent";
+  }
+
      useEffect(() => {
       // Aggiorna manualmente la proprietà checked
       COLORS.forEach(singleColor => {
@@ -78,6 +83,7 @@ return <>
          type="button"
           value={singleColor}
           shape="circle"
+          stroke={getStroke(singleColor)}
           fill={getFill(singleColor)}
           disabled={isDisabled}
           onClick={()=> setColor(singleColor)}/>)}
