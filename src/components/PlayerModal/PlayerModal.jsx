@@ -18,6 +18,7 @@ const PlayerModal = ({player, ready}) => {
     const {value: username, handleChange: handleUsernameChange } = useInput(`Player ${player}`)
 
     const [isDisabled, setIsDisabled] = useState(false)
+
     const [color, setColor] = useState("#A3C4FF")
 
     const getFill = (singleColor) => {
@@ -26,10 +27,6 @@ const PlayerModal = ({player, ready}) => {
   return singleColor;
 };
 
-  const getStroke = (singleColor) => {
-    if (singleColor === color) return "white";
-    return "transparent";
-  }
 
      useEffect(() => {
       // Aggiorna manualmente la proprietà checked
@@ -75,6 +72,7 @@ return <>
           style={{ alignSelf : "flex-start" }}
         />
         </div>
+    <div className={styles.color_choice}>
         <label className={styles.color_label} htmlFor={`color${player}`}>Scegli un colore:</label>
 <div className={styles.color_container}>
   
@@ -83,13 +81,14 @@ return <>
          type="button"
           value={singleColor}
           shape="circle"
-          stroke={getStroke(singleColor)}
-          fill={getFill(singleColor)}
+          stroke={{state: color, value: singleColor, color: "white"}}
+          fill={{ color: singleColor, isDisabled: singleColor !== color && isDisabled }}
           disabled={isDisabled}
           onClick={()=> setColor(singleColor)}/>)}
   
 </div>
-        <SketchButton fill="white" className={styles.ready_btn} type="submit" disabled={isDisabled} text="Pronto!"/>
+</div>
+        <SketchButton fill={{isDisabled, color: "white"}} className={styles.ready_btn} type="submit" disabled={isDisabled} text="Pronto!"/>
       </form>
     </div>
     </SketchWrapper>
