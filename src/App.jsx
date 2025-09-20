@@ -35,7 +35,7 @@ function App() {
   return <>
   {gameStarted? <>
   <div style={{position: "fixed", top:"3rem", left:"2rem"}}>
-  <SketchButton fill="lightcyan" style={{background: "none"}} text="punteggi" onClick={()=>setShowScores(true)}/>
+  <SketchButton fill={{color: "lightcyan"}} style={{background: "none"}} text="punteggi" onClick={()=>setShowScores(true)}/>
   </div>
     
     <SketchDialog isOpen={showScores}>

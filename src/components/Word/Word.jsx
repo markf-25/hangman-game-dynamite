@@ -61,7 +61,7 @@ const Word = ({currentTurn, currentPlayerId}) => {
     </div>
     <SketchDialog isOpen={winOrLose}>
         <p>{message}</p>
-        <SketchButton text="Ok, ok..." style={{background: "none", padding: "0px 12px"}} onClick={()=>setWinOrLose(false)}/>
+        <SketchButton text="Ok, ok..." fill={{color: "bisque"}} style={{background: "none", padding: "0px 12px"}} onClick={()=>setWinOrLose(false)}/>
     </SketchDialog>
     </>
 }
