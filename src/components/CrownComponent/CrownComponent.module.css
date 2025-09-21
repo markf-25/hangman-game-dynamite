@@ -1,0 +1,28 @@
+.crown {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background: url('/crown.png') center/cover no-repeat;
+  animation: tilt 1.6s steps(2) infinite;
+}
+
+.crown::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('/crown_glowy.png') center/cover no-repeat;
+  opacity: 0;
+  animation: fade 1.3s infinite;
+}
+
+@keyframes fade {
+  0%, 50% { opacity: 0; }
+  55%, 100% { opacity: 1; }
+}
+
+@keyframes tilt {
+  0%   { transform: rotate(8deg); }
+  10%  { transform: rotate(-6deg); }
+  85%  { transform: rotate(6deg); }
+  100% { transform: rotate(-7deg); }
+}
