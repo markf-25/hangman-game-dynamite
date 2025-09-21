@@ -5,7 +5,7 @@ import SketchButton from "../SketchButton/SketchButton"
 import { useSelector } from "react-redux"
 import { playersSelector} from "../../reducers/player.slice.js"
 
-const Scoreboard = ({newGame}) => {
+const Scoreboard = () => {
 
     const playersArray = useSelector(playersSelector)
 
@@ -16,7 +16,6 @@ const Scoreboard = ({newGame}) => {
         <h2>Classifica</h2>
     {sortedPlayersArray.map(player => <PlayerScore player={player}/>)}
     </div>
-    {newGame? <SketchButton text="Nuova partita?" style={{background: "none", padding: "2px 10px"}} fill={{color: "bisque"}} onClick={newGame}></SketchButton> : null}
     </>
 }
 

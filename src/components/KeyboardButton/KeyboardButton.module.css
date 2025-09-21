@@ -1,29 +1,24 @@
 .key_btn {
-    border: 1px solid rgb(66, 66, 66);
-    background-color: rgb(156, 156, 156);
+
+    background-color: transparent;
     height: 3rem;
     width: 3rem;
-    border-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0px 3px 0px rgb(66, 66, 66);
     transition: 0.2s;
+    color: white;
+    font-size: 30px;
+    text-shadow: black 2px 1px;
+    font-family: "Love Ya Like A Sister", cursive;
 }
 
-.key_btn:hover {
-    background-color: rgb(191, 191, 191);
-}
-
-.key_btn:active {
-    box-shadow: none;
-    transform: translateY(3px);
+.key_btn:hover:enabled {
+  color: rgb(235, 235, 235);
+  transform: scale(1.1);
 }
 
 .key_btn:disabled {
-    background-color: rgb(100, 100, 100);
-    box-shadow: 0px 1px 0px rgb(66, 66, 66);
-    transform: translateY(2px);
-
+    color: steelblue;
     cursor: default;
 }

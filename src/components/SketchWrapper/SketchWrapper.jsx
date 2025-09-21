@@ -6,7 +6,7 @@ const SketchWrapper = ({
   shape,
   children,
   reload,
-  stroke,
+  stroke ="black",
   fill
 }) => {
   const svgRef = useRef(null);
@@ -45,7 +45,7 @@ const SketchWrapper = ({
       svg.clientWidth - 10,
       svg.clientHeight - 10,
       {
-        stroke: "black",
+        stroke,
         strokeWidth: 2,
         roughness: 2.5,
         bowing: 3,

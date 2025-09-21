@@ -1,4 +1,5 @@
 import styles from "./KeyboardButton.module.css"
+import SketchButton from "../SketchButton/SketchButton"
 
 import { useContext, useState, useEffect } from "react"
 import { useSelector } from "react-redux"
@@ -24,7 +25,12 @@ const KeyboardButton = ({letter}) => {
     }
 
     return <>
-    <button className={styles.key_btn} disabled={alreadyPressed} onClick={userTry}>{letter}</button>
+    <SketchButton 
+    text={letter} className={styles.key_btn} 
+    disabled={alreadyPressed} realod={alreadyPressed} 
+    onClick={userTry} 
+    fill={alreadyPressed? {color: "grey"} : {color:"steelblue"}}
+    stroke={{color: "darkslateblue"}}/>
     </>
 }
 

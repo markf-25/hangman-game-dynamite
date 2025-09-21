@@ -18,18 +18,18 @@ function App() {
   const currentTurn = useSelector(turnSelector)
   const reloadsLeft = currentTurn.reloadsLeft
 
-  useEffect(()=>{
-    if(gameStarted && !reloadsLeft) {
-      setGameOver(true)
-    }
-    console.log("le robe poi", gameStarted, gameOver)
-  },[reloadsLeft])
+useEffect(() => {
+  if (gameStarted && !reloadsLeft) {
+    const timer = setTimeout(() => {
+      setGameOver(true);
+    }, 3005);
+    return () => clearTimeout(timer);
+  }
+}, [reloadsLeft]);
 
   const newGame = () => {
-    console.log("le robe all'inizio", gameStarted, gameOver)
   setGameStarted(false)
   setGameOver(false)
-    console.log("le robe all'inizio pt 2", gameStarted, gameOver)
   }
 
   return <>
@@ -38,20 +38,14 @@ function App() {
   <SketchButton fill={{color: "lightcyan"}} style={{background: "none"}} text="punteggi" onClick={()=>setShowScores(true)}/>
   </div>
     
-    <SketchDialog isOpen={showScores}>
-      <Scoreboard />
-      <hr/>
-      <SketchButton text="OK" fill="bisque" style={{alignSelf: "center", background: "none", padding: "0px 12px"}}onClick={()=> setShowScores(false)}/>
-    </SketchDialog>
+    <SketchDialog isOpen={showScores} onClose={()=> setShowScores(false)} />
 
     <Game />
   </>
   :
     <SetupGame startTheGame={setGameStarted} />}
     {gameOver && 
-      <SketchDialog isOpen={true}>
-        <Scoreboard newGame={newGame} />
-      </SketchDialog>}
+      <SketchDialog isOpen={true} newGame={newGame} />}
   </>
 }
 
