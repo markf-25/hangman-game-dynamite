@@ -16,11 +16,15 @@ const Word = ({currentTurn, currentPlayerId}) => {
 
     const { word, userGuesses, setErrors, newTurn } = useContext(GameContext)
 
-    const [winOrLose, setWinOrLose] = useState(false)
+    const [showResults, setShowResults] = useState(false)
+    
     const [message, setMessage] = useState("")
 
     useEffect(() => {
-      newTurn()     
+      const timer = setTimeout(() => { newTurn() }, 2000); 
+      /* cleanup per sicurezza  */
+      
+      return () => clearTimeout(timer);     
     }, [reloadsLeft]);
 
     const wordToGuess = [...word]
@@ -41,7 +45,7 @@ const Word = ({currentTurn, currentPlayerId}) => {
         if(allGuessed) {
             setMessage("HAI INDOVINATO!")
         }
-            setWinOrLose(true)
+            setShowResults(true)
             dispatch(updatePlayer({id: currentPlayerId, score: score(wrongGuesses.length)}))
             dispatch(nextTurn(currentTurn))
     }
@@ -59,7 +63,7 @@ const Word = ({currentTurn, currentPlayerId}) => {
             <WordLetter letter={letter}/>
         ))}
     </div>
-    <SketchDialog isOpen={winOrLose} message={message} onClose={()=>setWinOrLose(false)} />
+    <SketchDialog isOpen={showResults} message={message} onClose={()=>setShowResults(false)} youLose={youLose} />
     </>
 }
 

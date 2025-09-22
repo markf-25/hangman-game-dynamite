@@ -1,7 +1,7 @@
 import './App.css'
 import Game from "./components/Game/Game"
 import SetupGame from "./components/SetupGame/SetupGame"
-import Scoreboard from "./components/Scoreboard/Scoreboard"
+
 import SketchButton from './components/SketchButton/SketchButton'
 import SketchDialog from "./components/SketchDialog/SketchDialog"
 import { useState, useEffect } from "react"

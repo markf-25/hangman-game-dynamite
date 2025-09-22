@@ -27,7 +27,7 @@ const KeyboardButton = ({letter}) => {
     return <>
     <SketchButton 
     text={letter} className={styles.key_btn} 
-    disabled={alreadyPressed} realod={alreadyPressed} 
+    disabled={alreadyPressed}
     onClick={userTry} 
     fill={alreadyPressed? {color: "grey"} : {color:"steelblue"}}
     stroke={{color: "darkslateblue"}}/>

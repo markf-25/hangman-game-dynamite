@@ -8,7 +8,6 @@ import styles from "./SetupGame.module.css"
 
 import SketchWrapper from "../SketchWrapper/SketchWrapper"
 import SketchButton from "../SketchButton/SketchButton"
-import CrownComponent from "../CrownComponent/CrownComponent"
 
 import "wired-elements"
 
@@ -62,7 +61,6 @@ const SetupGame = ({ startTheGame }) => {
   }, [playerReady])
     
     return <>
-    <CrownComponent/>
     {!showPlayersSetup && 
     <SketchWrapper fill={wrapperColor}>
       <div className={styles.setup_nplayers}>

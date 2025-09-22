@@ -8,12 +8,14 @@ import { useEffect } from "react"
 const SketchDialog =({isOpen, onClose, newGame, message})=> {
 
     useEffect(() => {
+      if(message){
     const timer = setTimeout(() => {
       onClose();
     }, 3000);
 
     // cleanup per sicurezza
     return () => clearTimeout(timer);
+  }
 }, [message]);
 
 
