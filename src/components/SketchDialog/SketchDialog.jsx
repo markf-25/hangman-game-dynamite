@@ -5,7 +5,10 @@ import styles from "./SketchDialog.module.css"
 
 import { useEffect } from "react"
 
-const SketchDialog =({isOpen, onClose, newGame, message})=> {
+import explosion from "../../../public/crown.png"
+
+const SketchDialog =({isOpen, onClose, newGame, dynamiteExploded, message})=> {
+
 
     useEffect(() => {
       if(message){
@@ -23,10 +26,13 @@ const SketchDialog =({isOpen, onClose, newGame, message})=> {
 
     return <>
     <div className={styles.overlay}>
+    { dynamiteExploded && <img className={styles.explosion} src={explosion}/>}
     <SketchWrapper fill="white">
     <div className={styles.dialog_container}>
     {message?
+    <>
     <div>{message}</div>
+    </>
     :
     <>
     <ScoreBoard/>

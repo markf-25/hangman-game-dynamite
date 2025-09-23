@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import WordLetter from "../WordLetter/WordLetter"
 import SketchDialog from "../SketchDialog/SketchDialog"
-import SketchButton from "../SketchButton/SketchButton"
+import SketchWrapper from "../SketchWrapper/SketchWrapper"
 import styles from "./Word.module.css"
 import { GameContext } from "../../context/GameProvider"
 import { UNREQUIRED_CHARS, MAXERRORS, score } from "../../utils/constants.js"
@@ -17,14 +17,13 @@ const Word = ({currentTurn, currentPlayerId}) => {
     const { word, userGuesses, setErrors, newTurn } = useContext(GameContext)
 
     const [showResults, setShowResults] = useState(false)
+
+    const [ dynamiteExploded, setDynamiteExploded ] = useState(false)
     
     const [message, setMessage] = useState("")
 
     useEffect(() => {
-      const timer = setTimeout(() => { newTurn() }, 2000); 
-      /* cleanup per sicurezza  */
-      
-      return () => clearTimeout(timer);     
+      newTurn()    
     }, [reloadsLeft]);
 
     const wordToGuess = [...word]
@@ -39,7 +38,8 @@ const Word = ({currentTurn, currentPlayerId}) => {
 
     const yourTurnIsOver = () => {
         if(youLose){
-            setMessage(`NON HAI INDOVINATO! La parola era ${word}`)
+            setMessage(`KA-BOOOOM! \n La parola era ${word}`)
+            setDynamiteExploded(true)
             
         }
         if(allGuessed) {
@@ -57,13 +57,20 @@ const Word = ({currentTurn, currentPlayerId}) => {
     setErrors(wrongGuesses.length)
     }, [userGuesses])
 
+    const closeDialogHandler = () => {
+        setShowResults(false)
+        setDynamiteExploded(false)
+    }
+
     return <>
+{/*     <SketchWrapper reload={wordToGuess} stroke="transparent" fill="white"> */}
     <div className={styles.word_wrapper}>
         {wordToGuess.map(letter => (
             <WordLetter letter={letter}/>
         ))}
     </div>
-    <SketchDialog isOpen={showResults} message={message} onClose={()=>setShowResults(false)} youLose={youLose} />
+{/*     </SketchWrapper> */}
+    <SketchDialog isOpen={showResults} message={message} onClose={closeDialogHandler} dynamiteExploded={dynamiteExploded} />
     </>
 }
 

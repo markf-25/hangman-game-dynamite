@@ -12,6 +12,7 @@ createRoot(document.getElementById('root')).render(
     <Provider store={store}>
     <GameProvider>
       <PersistGate persistor={persistor}>
+        
     <App />
     </PersistGate>
     </GameProvider>
