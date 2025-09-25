@@ -16,7 +16,7 @@ const Errors = () => {
     const errorFrames = [errorsLeft5, errorsLeft4, errorsLeft3, errorsLeft2, errorsLeft1, null]
 
     return <>
-    <img src={errorFrames[errors]} style={{height: "120px"}}/>
+    <img src={errorFrames[errors]} style={{height: "200px"}}/>
     <p>ERRORI: {errors}/{MAXERRORS}</p>
     </>
 }

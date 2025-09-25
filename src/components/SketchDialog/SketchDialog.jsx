@@ -5,7 +5,7 @@ import styles from "./SketchDialog.module.css"
 
 import { useEffect } from "react"
 
-import explosion from "../../../public/crown.png"
+import explosion from "../../../public/explosion.png"
 
 const SketchDialog =({isOpen, onClose, newGame, dynamiteExploded, message})=> {
 
