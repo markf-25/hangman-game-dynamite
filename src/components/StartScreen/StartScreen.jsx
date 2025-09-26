@@ -1,8 +1,9 @@
-import Logo from '../../../public/Logo.png'
+import logo from '../../../public/Logo.png'
 
 const StartScreen = ({onStart, onRules, onCredits}) => {
 
 return <>
+<img src={logo}/>
     <button onClick={onStart}>START</button>
     <button onClick={onRules}>RULES</button>
     <button onClick={onCredits}>CREDITS</button>

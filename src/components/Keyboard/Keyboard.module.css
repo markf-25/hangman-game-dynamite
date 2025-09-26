@@ -1,12 +1,15 @@
 .keyboardWrapper {
-    display: grid;
-    grid-template-columns: repeat(13, 1fr);
-    grid-template-rows: repeat(2, auto);  
+    display: flex;
+    flex-flow: row wrap;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
     border-radius: 22px;
-    height: 12rem;
     width: fit-content;
     padding: 1rem;
+}
+
+.prova {
+grid-column: 1 / -1; 
+  justify-self: stretch;
 }

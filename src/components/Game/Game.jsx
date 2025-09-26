@@ -1,19 +1,15 @@
 import Gameplay from "../Gameplay/Gameplay"
 import SetupGame from "../SetupGame/SetupGame"
-import SketchButton from '../SketchButton/SketchButton'
 import SketchDialog from "../SketchDialog/SketchDialog"
 import { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
 import { turnSelector } from "../../reducers/turn.slice.js"
 
-
 function Game () {
-
-   const [view, setView] = useState("loading");
 
   const [gameStarted, setGameStarted] = useState(false)
   const [gameOver, setGameOver] = useState(false)
-  const [showScores, setShowScores] = useState(false)
+
   const currentTurn = useSelector(turnSelector)
   const reloadsLeft = currentTurn.reloadsLeft
 

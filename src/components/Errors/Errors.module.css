@@ -1,0 +1,8 @@
+.errorsWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.errorsWrapper img {
+height: 350px;
+}

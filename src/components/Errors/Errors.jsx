@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { GameContext } from "../../context/GameProvider"
 import { MAXERRORS } from "../../utils/constants.js"
+import styles from "./Errors.module.css"
 
 import errorsLeft5 from "../../../public/5left.png"
 import errorsLeft4 from "../../../public/4left.png"
@@ -15,10 +16,10 @@ const Errors = () => {
 
     const errorFrames = [errorsLeft5, errorsLeft4, errorsLeft3, errorsLeft2, errorsLeft1, null]
 
-    return <>
-    <img src={errorFrames[errors]} style={{height: "200px"}}/>
+    return <div className={styles.errorsWrapper}>
+    <img src={errorFrames[errors]}/>
     <p>ERRORI: {errors}/{MAXERRORS}</p>
-    </>
+    </div>
 }
 
 export default Errors
