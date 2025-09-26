@@ -1,25 +1,49 @@
-import Errors from "../Errors/Errors"
-import Word from "../Word/Word"
-import Keyboard from "../Keyboard/Keyboard"
-import PlayerScore from "../PlayerScore/PlayerScore"
-import { useSelector} from "react-redux"
-import { playerSelectorById } from "../../reducers/player.slice.js"
+import Gameplay from "../Gameplay/Gameplay"
+import SetupGame from "../SetupGame/SetupGame"
+import SketchButton from '../SketchButton/SketchButton'
+import SketchDialog from "../SketchDialog/SketchDialog"
+import { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
 import { turnSelector } from "../../reducers/turn.slice.js"
 
-import styles from "./Game.module.css"
 
-const Game = () => {
+function Game () {
+
+   const [view, setView] = useState("loading");
+
+  const [gameStarted, setGameStarted] = useState(false)
+  const [gameOver, setGameOver] = useState(false)
+  const [showScores, setShowScores] = useState(false)
   const currentTurn = useSelector(turnSelector)
-  const currentPlayerId = currentTurn.currentPlayerId
-  const player = useSelector(playerSelectorById(currentPlayerId))
+  const reloadsLeft = currentTurn.reloadsLeft
 
-    return <div className={styles.gameWrapper}>
-     <PlayerScore player={player}/>
+useEffect(() => {
+  if (gameStarted && !reloadsLeft) {
+    const timer = setTimeout(() => {
+      setGameOver(true);
+    }, 3005);
+    return () => clearTimeout(timer);
+  }
+}, [reloadsLeft]);
 
-      <Errors/>
-      <Word currentTurn={currentTurn} currentPlayerId={currentPlayerId}/>
-      <Keyboard />
-    </div>
+  const newGame = () => {
+  setGameStarted(false)
+  setGameOver(false)
+  }
+
+  return <>
+  
+  {gameStarted? <>
+    
+    <Gameplay />
+    
+  </>
+  :
+    <SetupGame startTheGame={setGameStarted} />}
+    {gameOver && 
+      <SketchDialog isOpen={true} newGame={newGame} />}
+
+  </>
 }
 
 export default Game

@@ -1,0 +1,16 @@
+.gameplay_wrapper {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+}
+
+.side_buttons {
+    position: fixed;
+    top: 3rem;
+    left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
