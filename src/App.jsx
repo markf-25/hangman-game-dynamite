@@ -10,6 +10,8 @@ import { turnSelector } from "./reducers/turn.slice.js"
 
 function App() {
 
+   const [view, setView] = useState("loading");
+
   const [gameStarted, setGameStarted] = useState(false)
   const [gameOver, setGameOver] = useState(false)
   const [showScores, setShowScores] = useState(false)
@@ -34,7 +36,7 @@ useEffect(() => {
   
   {gameStarted? <>
   <div style={{position: "fixed", top:"3rem", left:"2rem"}}>
-  <SketchButton fill={{color: "lightcyan"}} style={{background: "none"}} text="punteggi" onClick={()=>setShowScores(true)}/>
+  <SketchButton fill={{color: "lightcyan"}} style={{background: "none"}} text="Punteggi" onClick={()=>setShowScores(true)}/>
   </div>
     
     <SketchDialog isOpen={showScores} onClose={()=> setShowScores(false)} />

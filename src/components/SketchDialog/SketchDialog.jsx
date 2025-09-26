@@ -31,7 +31,8 @@ const SketchDialog =({isOpen, onClose, newGame, dynamiteExploded, message})=> {
     <div className={styles.dialog_container}>
     {message?
     <>
-    <div>{message}</div>
+    {dynamiteExploded && <h1>KA-BOOOOM!</h1>}
+    <p>{message}</p>
     </>
     :
     <>

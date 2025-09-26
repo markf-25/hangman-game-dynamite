@@ -2,7 +2,7 @@ import styles from "./Scoreboard.module.css"
 
 import PlayerScore from "../PlayerScore/PlayerScore"
 import CrownComponent from "../CrownComponent/CrownComponent"
-import SketchButton from "../SketchButton/SketchButton"
+
 import { useSelector } from "react-redux"
 import { playersSelector} from "../../reducers/player.slice.js"
 import { turnSelector} from "../../reducers/turn.slice.js"

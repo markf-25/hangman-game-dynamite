@@ -38,7 +38,8 @@ const Word = ({currentTurn, currentPlayerId}) => {
 
     const yourTurnIsOver = () => {
         if(youLose){
-            setMessage(`KA-BOOOOM! \n La parola era ${word}`)
+            setMessage(`La parola era
+                ${word}`)
             setDynamiteExploded(true)
             
         }
@@ -63,13 +64,13 @@ const Word = ({currentTurn, currentPlayerId}) => {
     }
 
     return <>
-{/*     <SketchWrapper reload={wordToGuess} stroke="transparent" fill="white"> */}
+    <SketchWrapper reload={wordToGuess} stroke="transparent" fill="white">
     <div className={styles.word_wrapper}>
         {wordToGuess.map(letter => (
             <WordLetter letter={letter}/>
         ))}
     </div>
-{/*     </SketchWrapper> */}
+    </SketchWrapper>
     <SketchDialog isOpen={showResults} message={message} onClose={closeDialogHandler} dynamiteExploded={dynamiteExploded} />
     </>
 }

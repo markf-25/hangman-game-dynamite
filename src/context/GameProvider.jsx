@@ -5,6 +5,7 @@ import { playerSelectorById } from "../reducers/player.slice.js"
 import { UNREQUIRED_CHARS } from "../utils/constants.js"
 
 export function GameProvider({ children }) {
+
   const [userGuesses, setUserGuesses] = useState([...UNREQUIRED_CHARS]);
   const [ errors, setErrors ] = useState(0)
   const [word, setWord] = useState("");
@@ -35,7 +36,7 @@ export function GameProvider({ children }) {
 
   return (
     <GameContext.Provider
-      value={{ userGuesses, setUserGuesses, currentPlayer, playerId, setPlayerId, word, setWord, errors, setErrors, reset, setReset, newTurn }}
+      value={{userGuesses, setUserGuesses, currentPlayer, playerId, setPlayerId, word, setWord, errors, setErrors, reset, setReset, newTurn }}
     >
       {children}
     </GameContext.Provider>
