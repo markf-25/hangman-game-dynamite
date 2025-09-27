@@ -71,7 +71,7 @@ const Word = ({currentTurn, currentPlayerId}) => {
         ))}
     </div>
     </SketchWrapper>
-    <SketchDialog isOpen={showResults} message={message} onClose={closeDialogHandler} dynamiteExploded={dynamiteExploded} />
+    <SketchDialog isOpen={showResults} dialogPurpose="turn ended" message={message} onClose={closeDialogHandler} dynamiteExploded={dynamiteExploded} />
     </>
 }
 

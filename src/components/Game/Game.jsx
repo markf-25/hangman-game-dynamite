@@ -37,7 +37,7 @@ useEffect(() => {
   :
     <SetupGame startTheGame={setGameStarted} />}
     {gameOver && 
-      <SketchDialog isOpen={true} newGame={newGame} />}
+      <SketchDialog isOpen={true} dialogPurpose="scoreboard" newGame={newGame} />}
 
   </>
 }

@@ -104,7 +104,7 @@ const SetupGame = ({ startTheGame }) => {
     { showPlayersSetup && (
       
     <div className={styles.modalContainer}>
-      <div className={styles.lamadonna}>
+      <div className={styles.back_btn_div }>
       <SketchButton fill={{color:"bisque"}} className={styles.sketch_btn} type="button" form="player" onClick={resetSetup} text="Indietro"/>
       </div>
       <div className={styles.playerModalContainer}>

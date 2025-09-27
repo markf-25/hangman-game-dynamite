@@ -17,6 +17,7 @@
     gap: 1rem;
     row-gap: 0.2rem;
     width: 90vw;
+    height: 100vh;
 }
 
 .setup_nplayers {
@@ -37,7 +38,7 @@ h1 {
     display: flex;
     gap: 1.2rem;
 }
-.lamadonna {
+.back_btn_div {
     display: flex;
     justify-content: center;
     position: fixed;

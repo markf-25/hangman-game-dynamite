@@ -12,10 +12,6 @@ return <>
   </div>
   <SketchButton text="RULES" fill={{color: "#D3A3FF"}} className={styles.buttons} onClick={onRules}/>
   <SketchButton text="CREDITS" fill={{color: "#A3C4FF"}} className={styles.buttons} onClick={onCredits}/>
-
-    {/*<SketchButton text="aaaa" className={styles.buttons} fill={{color: "#A3FFC9"}} onClick={onStart}/>
-    <SketchButton text="AAAAAAAA" className={styles.buttons} onClick={onRules}/>
-    <SketchButton text="aaAAAaAAAAAAA" className={styles.buttons} onClick={onCredits}/>*/}
   </div>
   </>
 }

@@ -56,3 +56,9 @@
     transform: translate(-50%, -50%) scale(1);
   }
 }
+
+.confirmDialog {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
