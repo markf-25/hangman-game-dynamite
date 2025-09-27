@@ -9,7 +9,7 @@ const Keyboard = () => {
 const letters = ALPHABET
 
     return <>
-    <SketchWrapper fill="lightsteelblue" stroke="steelblue">
+    <SketchWrapper fill="lightsteelblue" stroke="steelblue" reload={letters}>
     <div className={styles.keyboardWrapper}>
         {letters.map(letter => (
             <KeyboardButton letter={letter} key={letter}/>

@@ -13,7 +13,7 @@ const getFill = ({ isDisabled = false, color}) => {
 };
 
 return <>
-<SketchWrapper reload={stroke} fill={getFill(fill)} shape={shape} stroke={stroke ? getStroke(stroke) : "black"}>
+<SketchWrapper fill={getFill(fill)} shape={shape} stroke={stroke ? getStroke(stroke) : "black"}>
     <button {...props}>{text}</button>
 </SketchWrapper>
 </>
