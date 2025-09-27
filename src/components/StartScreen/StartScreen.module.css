@@ -1,0 +1,34 @@
+.buttons {
+    background: none;
+    border: none;
+    width: 10rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.start {
+    width: 14rem;
+    height: 5rem;
+    font-size: 2.5rem;
+}
+
+.start_wrapper {
+    margin-bottom: 3rem;
+
+}
+
+.buttons_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 1.5rem;
+    position: fixed;
+    bottom: 4rem;
+    right: 8rem;
+    gap: 1rem;
+}

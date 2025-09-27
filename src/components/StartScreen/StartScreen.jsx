@@ -1,15 +1,24 @@
 import logo from '../../../public/Logo.png'
-import SketchButton from "../SketchButton/SketchButton"
+import SketchButton from '../SketchButton/SketchButton'
+import styles from './StartScreen.module.css'
 
 const StartScreen = ({onStart, onRules, onCredits}) => {
 
 return <>
 <img src={logo}/>
-<SketchButton fill={{color: "#A3FFC9"}} style={{background: "none"}} text="Punteggi" onClick={()=>console.log("CIAO")}/>
-    <button onClick={onStart}>START</button>
-    <button onClick={onRules}>RULES</button>
-    <button onClick={onCredits}>CREDITS</button>
+<div className={styles.buttons_wrapper}>
+  <div className={styles.start_wrapper}>
+  <SketchButton text="START" fill={{color: "#A3FFC9"}} className={`${styles.buttons} ${styles.start}`} onClick={onStart}/>
+  </div>
+  <SketchButton text="RULES" fill={{color: "#D3A3FF"}} className={styles.buttons} onClick={onRules}/>
+  <SketchButton text="CREDITS" fill={{color: "#A3C4FF"}} className={styles.buttons} onClick={onCredits}/>
+
+    {/*<SketchButton text="aaaa" className={styles.buttons} fill={{color: "#A3FFC9"}} onClick={onStart}/>
+    <SketchButton text="AAAAAAAA" className={styles.buttons} onClick={onRules}/>
+    <SketchButton text="aaAAAaAAAAAAA" className={styles.buttons} onClick={onCredits}/>*/}
+  </div>
   </>
 }
 
 export default StartScreen
+
