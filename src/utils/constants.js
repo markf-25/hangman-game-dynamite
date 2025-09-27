@@ -30,6 +30,8 @@ export const COLORS = [
   "#D3A3FF"  // violetto pastello
 ]
 
+export const MAXUSERNAMELENGTH = 10
+
 export const MAXPLAYERSANDWORDS = [1, 2, 3, 4, 5]
 
 export const MAXERRORS = 5

@@ -37,6 +37,7 @@ body {
   background-image: url('/papercut.png');
   background-size: contain no-repeat;
   background-position: center 29%;
+  overflow: hidden;
 }
 
 h1 {

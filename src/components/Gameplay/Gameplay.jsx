@@ -22,9 +22,9 @@ const Gameplay = () => {
 
    return <div className={styles.gameplay_wrapper}>
 
-    <div className={styles.points_button}>
+    <div className={styles.header}>
       <SketchButton fill={{color: "lightcyan"}} style={{background: "none"}} text="Punteggi" onClick={()=>setShowScores(true)}/>
-     <PlayerScore player={player}/>
+     <PlayerScore player={player} purpose="gameHeader"/>
       <SketchButton fill={{color: "lightcyan"}} style={{background: "none"}} text="Esci dal gioco" onClick={()=>setView("start")}/>
     </div>
       <Word currentTurn={currentTurn} currentPlayerId={currentPlayerId}/>

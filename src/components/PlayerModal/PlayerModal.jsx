@@ -2,9 +2,9 @@ import useInput from "../../hooks/useInput"
 import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { setPlayers } from "../../reducers/player.slice.js"
-import { COLORS } from "../../utils/constants.js"
+import { COLORS, MAXUSERNAMELENGTH } from "../../utils/constants.js"
 import styles from "./PlayerModal.module.css"
-import "wired-elements"
+
 import { useRef } from "react"
 import SketchWrapper from "../SketchWrapper/SketchWrapper"
 import SketchButton from "../SketchButton/SketchButton"
@@ -21,13 +21,6 @@ const PlayerModal = ({player, ready}) => {
 
     const [color, setColor] = useState("#A3C4FF")
 
-    const getFill = (singleColor) => {
-  if (isDisabled && singleColor === color) return singleColor;
-  if (isDisabled) return "grey";
-  return singleColor;
-};
-
-
      useEffect(() => {
       // Aggiorna manualmente la proprietà checked
       COLORS.forEach(singleColor => {
@@ -37,26 +30,32 @@ const PlayerModal = ({player, ready}) => {
         }
       })
     }, [color])
+
+/*     useEffect(()=>{
+      setHandleValueChange(prev => [prev, ...username])
+      console.log("sadsda")
+    },[username]) */
   
 
     const setupNewPlayer = (e) => {
 
         e.preventDefault() 
 
+      if(!username) {
+        return
+      }
+
         const payload = {
         id: player,
-        username,
+        username: username.trim(),
         color,
         score: 0
         }
         
         dispatch(setPlayers(payload))
-        console.log("Nuovo player aggiunto:", payload)
         ready((prev) => prev+1)
         setIsDisabled(true)
     }
-
-    useEffect(()=>{console.log("PAPPPAEEREREREREERE", color)}, [color])
 
 return <>
 <SketchWrapper fill={color}>
@@ -65,18 +64,22 @@ return <>
       <form onSubmit={setupNewPlayer} className={styles.player_form}>
         <div className={styles.player_name}>
         <label htmlFor={`username${player}`}>Username:</label>
-        <wired-input
+        <SketchWrapper fill="white" stroke="white">
+        <input
           id={`username${player}`}
           value={username}
           onChange={handleUsernameChange}
-          style={{ alignSelf : "flex-start" }}
+          maxlength={MAXUSERNAMELENGTH}
         />
+        </SketchWrapper>
+        <p style={{color: !username? "red" : "inherit" }}>{username.length}/{MAXUSERNAMELENGTH}</p>
         </div>
     <div className={styles.color_choice}>
         <label className={styles.color_label} htmlFor={`color${player}`}>Scegli un colore:</label>
 <div className={styles.color_container}>
   
   {COLORS.map(singleColor => <SketchButton className={styles.colorButton}
+      key={singleColor}
          id={`color${player}`}
          type="button"
           value={singleColor}

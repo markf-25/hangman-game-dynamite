@@ -9,8 +9,6 @@ import styles from "./SetupGame.module.css"
 import SketchWrapper from "../SketchWrapper/SketchWrapper"
 import SketchButton from "../SketchButton/SketchButton"
 
-import "wired-elements"
-
 const SetupGame = ({ startTheGame }) => {
 
   const wrapperColor = "rgba(255, 228, 196, 0.774)"
@@ -46,14 +44,8 @@ const SetupGame = ({ startTheGame }) => {
     dispatch(clearGame())
     resetSetup
   }, [])
-
-  useEffect(() => {
-    console.log("sprotz", howManyWords)
-  }, [howManyWords])
     
   useEffect(() => {
-    console.log("PLAYERREADY", playerReady)
-    console.log("tot parole", howManyWords)
     if (playerReady > 0 && everyoneIsReady) {
       dispatch(setupGame({ totalPlayers: numPlayers.length, totalWords: howManyWords }))
       startTheGame(true)

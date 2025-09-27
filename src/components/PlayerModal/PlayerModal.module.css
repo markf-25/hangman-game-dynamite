@@ -33,6 +33,22 @@ display: flex;
   width: 95%;
 }
 
+.player_name input {
+    background-color: transparent;
+    align-self: flex-start;
+    width: 150px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    appearance: none; 
+}
+.player_name input:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    appearance: none; 
+}
+
 .ready_btn {
     width:fit-content;
     margin: -15px;

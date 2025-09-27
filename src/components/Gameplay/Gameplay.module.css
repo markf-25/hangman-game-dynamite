@@ -6,11 +6,13 @@
     align-items: center;
 }
 
-.points_button {
+.header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
+    padding-bottom: 1rem;
 }
 
 .keyboardErrorsWrapper {
