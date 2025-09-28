@@ -29,6 +29,6 @@
   "back to menu confirm": "Sei sicuro di voler tornare alla schermata iniziale?",
   "new game": "Nuova partita?",
   "api": {
-    "url": "https://random-words-api.kushcreates.com/api?language=en"
+    "url": "https://random-words-api.kushcreates.com/api?language=it"
   }
 }

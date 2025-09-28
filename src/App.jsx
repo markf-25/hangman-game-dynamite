@@ -14,7 +14,7 @@ function App() {
 
   return <>
    { view === "language" &&  <LanguageSelectionScreen />}
-   { view === "start" && <StartScreen  onStart={() => setView("play")}  onRules={()=> console.log("lereglloleeeeeeee")} onCredits={()=> console.log("creditsssssss")}/>}
+   { view === "start" && <StartScreen  onStart={() => setView("play")}  onRules={()=> console.log("lereglloleeeeeeee")} onCredits={()=> console.log("creditsssssss")} onLanguage={() => setView("language")}/>}
    { view === "play" &&  <Game />}
    </>
 }
