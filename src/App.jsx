@@ -1,8 +1,7 @@
 import './App.css'
-import Game from "./components/Game/Game"
-
+import LanguageSelectionScreen from './components/LanguageSelectionScreen/LanguageSelectionScreen'
 import StartScreen from './components/StartScreen/StartScreen'
-
+import Game from "./components/Game/Game"
 import { useContext } from "react"
 import { GameContext } from "./context/GameProvider"
 
@@ -14,6 +13,7 @@ function App() {
 
 
   return <>
+   { view === "language" &&  <LanguageSelectionScreen />}
    { view === "start" && <StartScreen  onStart={() => setView("play")}  onRules={()=> console.log("lereglloleeeeeeee")} onCredits={()=> console.log("creditsssssss")}/>}
    { view === "play" &&  <Game />}
    </>

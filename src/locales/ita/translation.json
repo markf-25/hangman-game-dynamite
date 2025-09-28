@@ -2,6 +2,7 @@
   "start" : "START",
   "rules" : "Come si gioca",
   "credits": "Credits",
+  "languages": "Cambia lingua",
 
   "player" : "Giocatore",
   "username" : "Nome",
@@ -11,18 +12,21 @@
   "scoreboard_plural": "Classifica",
   "explosion": "KA-BOOOOM!",
 
-  "select players": "Seleziona i giocatori",
-  "select turns": "Scegli il numero dei turni",
+  "select players": "Seleziona i giocatori:",
+  "select turns": "Scegli il numero dei turni:",
   "select color": "Scegli un colore:",
 
   "show scores": "Punteggi",
   "show menu": "Torna al menù",
 
+  "win message": "Hai indovinato!",
+  "lose message": "La parola era",
+
   "ok" : "Ok!",
   "cancel": "Annulla",
   "back" : "Indietro",
   "ready": "Pronto!",
-  "back to menu confirm": "Sei sicuro di voler tornare al menù?",
+  "back to menu confirm": "Sei sicuro di voler tornare alla schermata iniziale?",
   "new game": "Nuova partita?",
   "api": {
     "url": "https://random-words-api.kushcreates.com/api?language=en"

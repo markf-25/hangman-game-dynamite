@@ -1,5 +1,33 @@
 {
   "start" : "START",
+  "rules" : "How to play",
+  "credits": "Credits",
+  "languages": "Choose language",
+
+  "player" : "Player",
+  "username" : "Username",
+  "errors" : "ERRORS:",
+  "points" : "POINTS",
+  "scoreboard": "Score",
+  "scoreboard_plural": "Scoreboard",
+  "explosion": "KA-BOOOOM!",
+
+  "select players": "Select players:",
+  "select turns": "Select number of turns:",
+  "select color": "Pick a color:",
+
+  "show scores": "Scores",
+  "show menu": "Back to menu",
+
+  "win message": "You got it right!",
+  "lose message": "It was",
+
+  "ok" : "Ok!",
+  "cancel": "Cancel",
+  "back" : "Back",
+  "ready": "Ready!",
+  "back to menu confirm": "Do you want to go back to the title screen?",
+  "new game": "New Game?",
   "api": {
     "url": "https://random-words-api.kushcreates.com/api?language=en"
   }

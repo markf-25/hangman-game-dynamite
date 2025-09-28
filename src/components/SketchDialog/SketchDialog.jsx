@@ -9,6 +9,8 @@ import { useEffect } from "react"
 import explosion from "../../../public/explosion.png"
 
 const SketchDialog = ({ isOpen, onClose, dialogPurpose, newGame, dynamiteExploded, message, children }) => {
+  const { t } = useTranslation();
+  
   useEffect(() => {
     if (dialogPurpose === "turn ended") {
       const timer = setTimeout(() => {
@@ -21,7 +23,6 @@ const SketchDialog = ({ isOpen, onClose, dialogPurpose, newGame, dynamiteExplode
 
   if (!isOpen) return null
 
-  const { t } = useTranslation();
 
   const renderContent = () => {
     switch (dialogPurpose) {

@@ -16,6 +16,7 @@ return <>
   </div>
   <SketchButton text={t("rules")} fill={{color: "#D3A3FF"}} className={styles.buttons} onClick={onRules}/>
   <SketchButton text={t("credits")} fill={{color: "#A3C4FF"}} className={styles.buttons} onClick={onCredits}/>
+  <SketchButton text={t("languages")} fill={{color: "#FFF5A3"}} className={styles.buttons} onClick={onCredits}/>
   </div>
   </>
 }

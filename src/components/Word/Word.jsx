@@ -8,9 +8,11 @@ import { GameContext } from "../../context/GameProvider"
 import { UNREQUIRED_CHARS, MAXERRORS, score } from "../../utils/constants.js"
 import { updatePlayer } from "../../reducers/player.slice.js"
 import { nextTurn } from "../../reducers/turn.slice.js"
+import { useTranslation } from "react-i18next";
 
 const Word = ({currentTurn, currentPlayerId}) => {
     const dispatch = useDispatch()
+    const { t } = useTranslation();
 
     const reloadsLeft = currentTurn.reloadsLeft
 
@@ -38,13 +40,12 @@ const Word = ({currentTurn, currentPlayerId}) => {
 
     const yourTurnIsOver = () => {
         if(youLose){
-            setMessage(`La parola era
-                ${word}`)
+            setMessage(`${t("lose message")} ${word}`)
             setDynamiteExploded(true)
             
         }
         if(allGuessed) {
-            setMessage("HAI INDOVINATO!")
+            setMessage(`${t("win message")}`)
         }
             setShowResults(true)
             dispatch(updatePlayer({id: currentPlayerId, score: score(wrongGuesses.length)}))

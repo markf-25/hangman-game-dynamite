@@ -24,7 +24,7 @@ const Scoreboard = () => {
         {playersArray.length > 1? <h2>{t("scoreboard_plural")}</h2> : <h2>{t("scoreboard")}</h2>}
     {sortedPlayersArray.map(player => 
     <div className={styles.player}>
-    {player === sortedPlayersArray[0] && !reloadsLeft && <CrownComponent/>}
+    {player === sortedPlayersArray[0] && sortedPlayersArray.length>1 && !reloadsLeft && <CrownComponent/>}
     <PlayerScore player={player}/>
     </div>)}
     </div>

@@ -1,0 +1,21 @@
+.flags_container {
+    display: flex;
+    flex-flow: row wrap;
+    width: 90 vw;
+    height: 90vh;
+    gap: 5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.flag {
+    cursor: "pointer";
+    opacity: 0.7;
+    transition: 0.15s;
+    height: 220px;
+}
+
+.flag:hover {
+    opacity: 1;
+    
+}

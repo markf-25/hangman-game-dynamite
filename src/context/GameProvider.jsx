@@ -6,7 +6,7 @@ import { UNREQUIRED_CHARS } from "../utils/constants.js"
 
 export function GameProvider({ children }) {
 
-  const [view, setView] = useState("start");
+  const [view, setView] = useState("language");
 
   const [userGuesses, setUserGuesses] = useState([...UNREQUIRED_CHARS]);
   const [ errors, setErrors ] = useState(0)
