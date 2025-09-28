@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.0",
+    "i18next": "^25.5.2",
     "opentype.js": "^1.3.4",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-i18next": "^16.0.0",
     "react-redux": "^9.2.0",
     "redux-persist": "^6.0.0",
     "roughjs": "^4.6.6"

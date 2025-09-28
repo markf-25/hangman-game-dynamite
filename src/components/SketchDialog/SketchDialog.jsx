@@ -2,6 +2,7 @@ import SketchWrapper from "../SketchWrapper/SketchWrapper"
 import SketchButton from "../SketchButton/SketchButton"
 import ScoreBoard from "../Scoreboard/Scoreboard"
 import styles from "./SketchDialog.module.css"
+import { useTranslation } from "react-i18next";
 
 import { useEffect } from "react"
 
@@ -20,11 +21,13 @@ const SketchDialog = ({ isOpen, onClose, dialogPurpose, newGame, dynamiteExplode
 
   if (!isOpen) return null
 
+  const { t } = useTranslation();
+
   const renderContent = () => {
     switch (dialogPurpose) {
       case "turn ended":
         return <>
-            {dynamiteExploded && <h1>KA-BOOOOM!</h1>}
+            {dynamiteExploded && <h1>{t("explosion")}</h1>}
             <p>{message}</p>
           </>
 
@@ -32,7 +35,7 @@ const SketchDialog = ({ isOpen, onClose, dialogPurpose, newGame, dynamiteExplode
         return <>
             <ScoreBoard />
             <SketchButton
-              text={newGame ? "Nuova partita?" : "Ok!"}
+              text={newGame ? t("new game") : t("ok")}
               style={{ background: "none", padding: "2px 10px" }}
               fill={{ color: "bisque" }}
               onClick={newGame ? newGame : onClose}
@@ -44,16 +47,16 @@ const SketchDialog = ({ isOpen, onClose, dialogPurpose, newGame, dynamiteExplode
             <p>{message}</p>
             <div className={styles.confirmDialog}>
             <SketchButton
-              text="Annulla"
-              style={{ background: "none", padding: "2px 10px" }}
-              fill={{ color: "white" }}
-              onClick={onClose}
-            />
-            <SketchButton
-              text="Ok!"
+              text={t("ok")}
               style={{ background: "none", padding: "2px 10px" }}
               fill={{ color: "bisque" }}
               onClick={newGame}
+            />
+            <SketchButton
+              text={t("cancel")}
+              style={{ background: "none", padding: "2px 10px" }}
+              fill={{ color: "white" }}
+              onClick={onClose}
             />
             </div>
           </>

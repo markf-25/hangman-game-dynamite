@@ -9,7 +9,11 @@ import styles from "./SetupGame.module.css"
 import SketchWrapper from "../SketchWrapper/SketchWrapper"
 import SketchButton from "../SketchButton/SketchButton"
 
+import { useTranslation } from "react-i18next";
+
 const SetupGame = ({ startTheGame }) => {
+
+  const { t } = useTranslation();
 
   const wrapperColor = "rgba(255, 228, 196, 0.774)"
 
@@ -56,7 +60,7 @@ const SetupGame = ({ startTheGame }) => {
     {!showPlayersSetup && 
     <SketchWrapper fill={wrapperColor}>
       <div className={styles.setup_nplayers}>
-        <h1>Quanti giocatori?</h1>
+        <h1>{t("select players")}</h1>
         <div className={styles.radio_btns}>
  {MAXPLAYERSANDWORDS.map(num => (
     <label key={num}>
@@ -73,7 +77,7 @@ const SetupGame = ({ startTheGame }) => {
     </label>
   ))}
   </div>
-  <h1>Quante parole?</h1>
+  <h1>{t("select turns")}</h1>
   <div className={styles.radio_btns}>
   {MAXPLAYERSANDWORDS.map(wordNum => (
     <label key={wordNum}>
@@ -93,7 +97,7 @@ const SetupGame = ({ startTheGame }) => {
             <SketchButton className={styles.sketch_btn}
               disabled={buttonDisabled}
               fill={{isDisabled: buttonDisabled, color: "lightsalmon"}}
-              text="OK" 
+              text={t("ok")} 
               onClick={() => setShowPlayersSetup(true)}/>
           </div>
         </SketchWrapper>
@@ -105,7 +109,7 @@ const SetupGame = ({ startTheGame }) => {
       
     <div className={styles.modalContainer}>
       <div className={styles.back_btn_div }>
-      <SketchButton fill={{color:"bisque"}} className={styles.sketch_btn} type="button" form="player" onClick={resetSetup} text="Indietro"/>
+      <SketchButton fill={{color:"bisque"}} className={styles.sketch_btn} type="button" form="player" onClick={resetSetup} text={t("back")}/>
       </div>
       <div className={styles.playerModalContainer}>
       {numPlayers.map(player => (<PlayerModal key={player} player={player} ready={setPlayerReady}/>))}

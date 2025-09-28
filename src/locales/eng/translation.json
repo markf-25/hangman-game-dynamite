@@ -1,0 +1,6 @@
+{
+  "start" : "START",
+  "api": {
+    "url": "https://random-words-api.kushcreates.com/api?language=en"
+  }
+}

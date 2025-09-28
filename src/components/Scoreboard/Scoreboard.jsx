@@ -7,7 +7,11 @@ import { useSelector } from "react-redux"
 import { playersSelector} from "../../reducers/player.slice.js"
 import { turnSelector} from "../../reducers/turn.slice.js"
 
+import { useTranslation } from "react-i18next";
+
 const Scoreboard = () => {
+
+    const { t } = useTranslation();
 
     const playersArray = useSelector(playersSelector)
     const currentTurn = useSelector(turnSelector)
@@ -17,7 +21,7 @@ const Scoreboard = () => {
 
     return <>
     <div className={styles.board}>
-        <h2>Classifica</h2>
+        {playersArray.length > 1? <h2>{t("scoreboard_plural")}</h2> : <h2>{t("scoreboard")}</h2>}
     {sortedPlayersArray.map(player => 
     <div className={styles.player}>
     {player === sortedPlayersArray[0] && !reloadsLeft && <CrownComponent/>}
