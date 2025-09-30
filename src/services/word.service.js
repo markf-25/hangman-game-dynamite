@@ -4,7 +4,7 @@ export const getWord = async () => {
   try {
     const apiUrl = t("api.url");
 
-    const response = await fetch(`${apiUrl}&words=1`, {
+    const response = await fetch(`${apiUrl}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });

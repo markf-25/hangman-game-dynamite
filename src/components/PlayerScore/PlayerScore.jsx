@@ -8,7 +8,7 @@ const PlayerScore = ({player, purpose = "scoreboard"}) => {
 
     return <div className={`${styles.playerInfo} ${styles[`playerInfo_${purpose}`]}`}>
 
-        <p className={styles.name}>{player.id} - {player.username}</p>
+        <p style={{boxShadow: `inset 0 5em 0 ${player.color}`, padding: "2px 10px"}}>{player.id}. {player.username}</p>
 
         <p>{player.score} {t("points")}</p> 
     </div>

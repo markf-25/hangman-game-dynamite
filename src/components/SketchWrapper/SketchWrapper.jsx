@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import rough from "roughjs"; 
 import styles from "./SketchWrapper.module.css"
 
@@ -6,10 +6,40 @@ const SketchWrapper = ({
   shape,
   children,
   reload,
-  stroke ="black",
-  fill
+  stroke = "black",
+  fill,
+  dynamicResize = true
 }) => {
-  const svgRef = useRef(null);
+    const svgRef = useRef(null);
+  const resizeTimeout = useRef(null);
+
+  const [screenSize, setScreenSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  // Aggiorna screenSize quando la finestra viene ridimensionata
+  useEffect(() => {
+    if (!dynamicResize) return;
+
+    const handleResize = () => {
+      if (resizeTimeout.current) {
+        clearTimeout(resizeTimeout.current);
+      }
+      resizeTimeout.current = setTimeout(() => {
+        setScreenSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      }, 300);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      if (resizeTimeout.current) clearTimeout(resizeTimeout.current);
+    };
+  }, [dynamicResize]);
 
   useEffect(() => {
   const svg = svgRef.current;
@@ -58,7 +88,7 @@ const SketchWrapper = ({
 
   if (node) svg.appendChild(node);
 
-}, [fill, stroke, reload]);
+}, [fill, stroke, reload, screenSize]);
 
   return <>
     <div className={styles.container}>

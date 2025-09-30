@@ -19,7 +19,8 @@ useEffect(() => {
   if (gameStarted && !reloadsLeft) {
     const timer = setTimeout(() => {
       setGameOver(true);
-    }, 3005);
+      
+    }, 3300);
     return () => clearTimeout(timer);
   }
 }, [reloadsLeft]);

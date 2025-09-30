@@ -67,8 +67,8 @@ return <>
         <input
           id={`username${player}`}
           value={username}
-          onChange={handleUsernameChange}
-          maxlength={MAXUSERNAMELENGTH}
+          onChange={!isDisabled? handleUsernameChange : null}
+          maxLength={MAXUSERNAMELENGTH}
         />
         </SketchWrapper>
         <p style={{color: !username? "red" : "inherit" }}>{username.length}/{MAXUSERNAMELENGTH}</p>
@@ -90,7 +90,7 @@ return <>
   
 </div>
 </div>
-        <SketchButton fill={{isDisabled, color: "white"}} className={styles.ready_btn} type="submit" disabled={isDisabled} text={t("ready")}/>
+        <SketchButton fill={{isDisabled, color: "white"}} className={styles.ready_btn} type="submit" disabled={isDisabled || !username.length} text={t("ready")}/>
       </form>
     </div>
     </SketchWrapper>

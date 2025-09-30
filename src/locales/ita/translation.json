@@ -28,7 +28,16 @@
   "ready": "Pronto!",
   "back to menu confirm": "Sei sicuro di voler tornare alla schermata iniziale?",
   "new game": "Nuova partita?",
+  
+  "authors": "Sviluppato con amore da",
+  "art": "Grafiche scarabocchiate da",
+  "logo": "Logo un po' buttato lì da",
+  "tools": "Risorse utilizzate:",
+  "thanks": "Un ringraziamento speciale a",
+  "copyright": "Tutti i diritti riservati (vabbè, non esageriamo)",
+  
   "api": {
-    "url": "https://random-words-api.kushcreates.com/api?language=it"
-  }
+    "url": "https://random-words-api.kushcreates.com/api?language=it&words=1"
+  },
+  "about": "No, non è come pensi.\n\nQuesto non è un banale gioco dell’impiccato, in cui devi indovinare una parola una lettera alla volta per salvare un tizio dalla forca.\n\nÈ un gioco completamente diverso, in cui devi indovinare una parola una lettera alla volta per impedire alla dinamite di far saltare in aria ogni cosa.\n\nVisto? Completamente diverso.\n\nED È MULTIPLAYER! ...circa."
 }
