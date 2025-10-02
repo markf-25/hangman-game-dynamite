@@ -1,9 +1,9 @@
 const config = {
     api: {
-        base: 'https://random-words-api.kushcreates.com/api',
+        backend: 'http://localhost:5000/api/word',
         languages: {
-            italian: '?language=it',
-            english: '?language=en'
+            ita: 'https://random-words-api.kushcreates.com/api?language=it&words=1',
+            eng: 'https://random-word-api.herokuapp.com/word'
 }
 }
 }
@@ -12,8 +12,8 @@ const config = {
 const databaseUrl = config.api.base;
 
 //Languages//
-const italian = config.api.languages.italian
-const english = config.api.languages.english
+const italian = config.api.languages.ita
+const english = config.api.languages.eng
 
 //Shortcuts//
 export const italianWord = databaseUrl + italian

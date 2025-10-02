@@ -1,21 +1,21 @@
-import { t } from "i18next";
+import i18next from "i18next";
+import config from "../config.js";
 
 export const getWord = async () => {
   try {
-    const apiUrl = t("api.url");
-
-    const response = await fetch(`${apiUrl}`, {
+    const lang = i18next.language || "eng";
+    const response = await fetch(`${config.api.backend}?lang=${lang}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
 
     const data = await response.json();
-
     if (response.ok) {
-      console.log("Fetched word:", data[0].word);
-      return data[0].word.toUpperCase();
-    }
+              return data.toUpperCase();
+              }
+
+
   } catch (error) {
-    console.error(error);
+    console.error("Errore getWord:", error);
   }
 };
