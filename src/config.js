@@ -1,6 +1,6 @@
 const config = {
     api: {
-        backend: '/api/word',
+        backend: '/api/server',
         languages: {
             ita: 'https://random-words-api.kushcreates.com/api?language=it&words=1',
             eng: 'https://random-word-api.herokuapp.com/word',
