@@ -31,7 +31,7 @@ const LanguageSelectionScreen = () => {
 
     const languageSelected = (lang) => {
         i18n.changeLanguage(lang.id)
-        setView("start")
+        setView("start")   
     }
 
     return <>
