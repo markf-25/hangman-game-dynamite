@@ -1,15 +1,15 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import eng from "./locales/eng/translation.json"
-import ita from "./locales/ita/translation.json"
+import LanguageDetector from 'i18next-browser-languagedetector';
+import en from "./locales/eng/translation.json"
+import it from "./locales/ita/translation.json"
 
-i18n.use(initReactI18next).init({
+i18n.use(LanguageDetector).use(initReactI18next).init({
   resources: {
-    eng: { translation: eng },
-    ita: { translation: ita }
+    en: { translation: en },
+    it: { translation: it }
   },
-  lng: "ita",
-  fallbackLng: "eng",
+  fallbackLng: "en",
   interpolation: { escapeValue: false }
 });
 

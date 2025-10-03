@@ -1,8 +1,8 @@
 import { localizedApi } from "../src/config.js";
 
 export default async function handler(req, res) {
-  const { lang = "eng" } = req.query;
-  const targetUrl = localizedApi[lang] || localizedApi["eng"];
+  const { lang = "en" } = req.query;
+  const targetUrl = localizedApi[lang] || localizedApi["en"];
 
   try {
     const response = await fetch(targetUrl);
@@ -10,10 +10,10 @@ export default async function handler(req, res) {
 
     let word;
     switch (lang) {
-      case "eng":
+      case "en":
         word = data[0];
         break;
-      case "ita":
+      case "it":
         word = data[0].word;
         break;
       default:

@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 const LanguageSelectionScreen = () => {
     const { t, i18n } = useTranslation();
     const {setView} = useContext(GameContext);
-    const languages = [{ name: "english", id: "eng", flag: ukFlag}, { name: "italian", id: "ita", flag: italianFlag}]
+    const languages = [{ name: "english", id: "en", flag: ukFlag}, { name: "italian", id: "it", flag: italianFlag}]
     const [isPhone, setIsPhone] = useState(window.innerWidth < 768);
 
     if (isPhone) {
