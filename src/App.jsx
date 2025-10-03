@@ -15,10 +15,10 @@ function App() {
 
   return <>
   
-    { view === "language" &&  <LanguageSelectionScreen />}
+   { view === "language" &&  <LanguageSelectionScreen />}
    { view === "start" && <StartScreen  onStart={() => setView("play")} onLanguage={() => setView("language")} onCredits={() => setView("credits")}/>}
    { view === "play" &&  <Game />}
-   { view === "credits" && <Credits/>}
+   { view === "credits" && <Credits backToTitle={() => setView("start")}/>}
    </>
 }
 

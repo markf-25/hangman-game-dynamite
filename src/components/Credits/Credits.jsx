@@ -1,12 +1,16 @@
 import styles from "./Credits.module.css"
 import { useTranslation } from "react-i18next"
 import SketchWrapper from "../SketchWrapper/SketchWrapper"
+import SketchButton from "../SketchButton/SketchButton"
 
-const Credits = () => {
+const Credits = ({backToTitle}) => {
     const { t } = useTranslation();
 
     return <>
     <div className={styles.credits_page}>
+    <div className={styles.back_btn_div }>
+      <SketchButton fill={{color:"bisque"}} className={styles.sketch_btn} type="button" form="player" onClick={backToTitle} text={t("back")}/>
+    </div>
     <h1>{t("credits")}</h1>
     <div className={styles.credits}>
     <div className={styles.authorsContainer}>

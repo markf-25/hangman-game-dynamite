@@ -8,6 +8,19 @@
 
 }
 
+.back_btn_div {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    bottom: 2rem;
+    left: 1.5rem;
+}
+
+.sketch_btn {
+    align-self: flex-start;
+    width:fit-content;
+    background: transparent;
+}
 .credits_page h2 {
     font-size: 25px;
     margin: 2px;
