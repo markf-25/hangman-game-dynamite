@@ -39,7 +39,7 @@ const Gameplay = () => {
       </div>
       <hr/>
       <footer>© 2025 - M&N Group</footer>
-      <SketchDialog isOpen={showScores || confirm} dialogPurpose={showScores? "scoreboard" : "confirm dialog"} message={confirm? t("back to menu confirm") : null } newGame={confirm? ()=> setView("start") : null }onClose={()=> showScores? setShowScores(false) : setConfirm(false)}/>
+      <SketchDialog isOpen={showScores || confirm} dialogPurpose={showScores? "scoreboard" : "confirm dialog"} message={confirm? t("back to menu confirm") : null } confirmAction={confirm? ()=> setView("start") : null }onClose={()=> showScores? setShowScores(false) : setConfirm(false)}/>
     </div>
 }
 

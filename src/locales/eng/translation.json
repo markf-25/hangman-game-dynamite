@@ -24,6 +24,8 @@
 
   "ok" : "Ok!",
   "cancel": "Cancel",
+  "exit" : "Quit",
+  "exit confirm": "Are you sure you want to quit?",
   "back" : "Back",
   "ready": "Ready!",
   "back to menu confirm": "Do you want to go back to the title screen?",
@@ -35,10 +37,6 @@
   "tools": "Tools and libraries:",
   "thanks": "Special thanks:",
   "copyright": "All rights reserved (...no, not really)",
-
-  "api": {
-    "url": "https://random-words-api.kushcreates.com/api?language=en&words=1"
-  },
 
   "about": "We know what you’re thinking.\n\nThis is not the usual hangman's game, where you have to guess a word letter by letter to rescue some guy from the gallows.\n\nNo. This is an entirely different game, where you have to guess a word letter by letter to stop some dynamite from blowing everything up.\n\nSee? Entirely different.\n\nAND IT’S MULTIPLAYER.\n…sort of."
 

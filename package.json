@@ -8,10 +8,15 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start:server": "node server/server.js"
+    "start:server": "node server/server.js",
+    "tauri": "tauri",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.0",
+    "@tauri-apps/api": "^2.8.0",
+    "@vercel/speed-insights": "^1.2.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "i18next": "^25.5.3",

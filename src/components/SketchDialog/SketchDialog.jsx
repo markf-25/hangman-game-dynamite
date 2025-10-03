@@ -8,7 +8,7 @@ import { useEffect } from "react"
 
 import explosion from "../../../public/explosion.png"
 
-const SketchDialog = ({ isOpen, onClose, dialogPurpose = "info", newGame, dynamiteExploded, message }) => {
+const SketchDialog = ({ isOpen, onClose, dialogPurpose = "info", confirmAction, dynamiteExploded, message }) => {
   const { t } = useTranslation();
   
   useEffect(() => {
@@ -36,10 +36,10 @@ const SketchDialog = ({ isOpen, onClose, dialogPurpose = "info", newGame, dynami
         return <>
             <ScoreBoard />
             <SketchButton
-              text={newGame ? t("new game") : t("ok")}
+              text={confirmAction ? t("new game") : t("ok")}
               style={{ background: "none", padding: "2px 10px" }}
               fill={{ color: "bisque" }}
-              onClick={newGame ? newGame : onClose}
+              onClick={confirmAction ? confirmAction : onClose}
             />
           </>
 
@@ -51,7 +51,7 @@ const SketchDialog = ({ isOpen, onClose, dialogPurpose = "info", newGame, dynami
               text={t("ok")}
               style={{ background: "none", padding: "2px 10px" }}
               fill={{ color: "bisque" }}
-              onClick={newGame}
+              onClick={confirmAction}
             />
             <SketchButton
               text={t("cancel")}
