@@ -1,1 +1,0 @@
-C:\Users\dotto\Documents\Documenti\Lavoro\Programmazione\hanging_game\prova-rust\target\debug\prova-rust.exe: C:\Users\dotto\Documents\Documenti\Lavoro\Programmazione\hanging_game\prova-rust\src\main.rs
