@@ -8,6 +8,7 @@ import styles from "./PlayerModal.module.css"
 import { useRef } from "react"
 import SketchWrapper from "../SketchWrapper/SketchWrapper"
 import SketchButton from "../SketchButton/SketchButton"
+import SketchInput from "../SketchInput/SketchInput"
 
 import { useTranslation } from "react-i18next";
 
@@ -63,14 +64,14 @@ return <>
       <form onSubmit={setupNewPlayer} className={styles.player_form}>
         <div className={styles.player_name}>
         <label htmlFor={`username${player}`}>{t("username")}:</label>
-        <SketchWrapper fill="white" stroke="white">
-        <input
-          id={`username${player}`}
-          value={username}
-          onChange={!isDisabled? handleUsernameChange : null}
-          maxLength={MAXUSERNAMELENGTH}
-        />
-        </SketchWrapper>
+        <SketchInput 
+        fill="white" 
+        stroke ="white" 
+        id={`username${player}`}
+        value={username}
+        onChange={!isDisabled? handleUsernameChange : null}
+        maxLength={MAXUSERNAMELENGTH}/>
+        
         <p style={{color: !username? "red" : "inherit" }}>{username.length}/{MAXUSERNAMELENGTH}</p>
         </div>
     <div className={styles.color_choice}>
