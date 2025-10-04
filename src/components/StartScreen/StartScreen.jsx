@@ -19,7 +19,7 @@ const showInfo = (message) =>{
   setMessage(message)
 }
 
-return <>
+return <div className={styles.startScreenContainer}>
 <img src={logo}/>
 <div className={styles.buttons_wrapper}>
   <div className={styles.start_wrapper}>
@@ -30,7 +30,8 @@ return <>
   <SketchButton text={t("languages")} fill={{color: "#FFF5A3"}} className={styles.buttons} onClick={onLanguage}/>
   </div>
   <SketchDialog isOpen={openDialog} onClose={()=>setOpenDialog(false)} message={message}/>
-  </>
+  <footer>© 2025 - Raccoons in a trench coat</footer>
+  </div>
 }
 
 export default StartScreen
