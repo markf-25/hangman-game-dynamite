@@ -19,12 +19,14 @@ const Scoreboard = () => {
 
     const sortedPlayersArray = playersArray.toSorted((a, b) => b.score - a.score)
 
+    const winnerScore = sortedPlayersArray[0]?.score ?? 0
+
     return <>
     <div className={styles.board}>
         {playersArray.length > 1? <h2>{t("scoreboard_plural")}</h2> : <h2>{t("scoreboard")}</h2>}
     {sortedPlayersArray.map(player => 
     <div className={styles.player}>
-    {player === sortedPlayersArray[0] && sortedPlayersArray.length>1 && !reloadsLeft && <CrownComponent/>}
+    {player.score === winnerScore && sortedPlayersArray.length>1 && !reloadsLeft && <CrownComponent/>}
     <PlayerScore player={player}/>
     </div>)}
     </div>

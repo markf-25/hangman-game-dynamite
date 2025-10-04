@@ -3,6 +3,9 @@ import { databaseUrl } from "../config.js";
 
 export const getWord = async () => {
   try {
+      if (import.meta.env.DEV) {
+      return "PROVA"; 
+      }
     const lang = i18next.language || "eng";
     const response = await fetch(`${databaseUrl}?lang=${lang}`, {
       method: "GET",
