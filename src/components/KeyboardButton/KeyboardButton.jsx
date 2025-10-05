@@ -20,15 +20,30 @@ const KeyboardButton = ({letter}) => {
     },[reloadsLeft])
 
     const userTry = () => {
+        if(!alreadyPressed){
         setUserGuesses(prev => [...prev, letter])
         setAlreadyPressed(true)
+        }
     }
+
+useEffect(() => {
+    const handleKeyDown = (event) => {
+      // Case-insensitive
+      if (event.key.toLowerCase() === letter.toLowerCase()) {
+        userTry();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [letter, alreadyPressed]);
 
     return <>
     <SketchButton 
     text={letter} className={styles.key_btn} 
     disabled={alreadyPressed}
     onClick={userTry} 
+    onKeyDown={userTry}
     fill={alreadyPressed? {color: "grey"} : {color:"steelblue"}}
     stroke={{color: "darkslateblue"}}/>
     </>

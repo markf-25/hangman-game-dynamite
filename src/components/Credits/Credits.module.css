@@ -35,20 +35,14 @@
     align-items: center;
 }
 
+li {
+    list-style: none;
+}
+
 .credits p, ul {
     font-family: "Love Ya Like A Sister", cursive;
-    font-size: 28px;
+    font-size: 25px;
     margin: 5px;
-}
-
-ul {
-    list-style: none;
-    text-align: left;
-}
-
-li {
-    line-height: 4rem;
-    line-break: none;
 }
 
 .authorsContainer {
@@ -70,6 +64,34 @@ li {
     max-width: fit-content;
     padding: 0.3rem;
     margin: 1rem 0.5rem 0.5rem 0.5rem;
+}
+
+.librariesItem {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    white-space: pre-line;
+    min-height: 8rem;
+    min-width: 400px;
+    max-width: fit-content;
+    margin: 2rem 3rem 2rem 0 ;
+}
+
+.mainList {
+    list-style: none;
+    text-align: left;
+    margin-top: 0.1rem;
+}
+
+.mainList li, a{
+    line-height: 3rem;
+    line-break: none;
+    font-family: "Love Ya Like A Sister", cursive;
+}
+
+.subList li {
+    line-height: 2.5rem;
+    font-size: 20px;
 }
 
 #copyright {

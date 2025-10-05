@@ -35,20 +35,22 @@ const Credits = ({backToTitle}) => {
     </div>
 
         <SketchWrapper fill="yellow" stroke="darkgoldenrod">
-    <div className={styles.creditItem}>
+    <div className={styles.librariesItem}>
     <h2>{t("tools")}</h2>
-    <ul><li>- React, React redux, redux persist</li>
+    <ul className={styles.mainList}>
+        <li>- React: 
+            <ul className={styles.subList}>
+            <li>- Redux </li>
+            <li>- Redux Persist </li>
+            <li>- Persist </li>
+            </ul></li>
         <li>- i18next</li>
         <li>- Vite</li>
         <li>- Rough.js</li>
-        <li>- Random Words API (kushcreates.com)</li>
+        <li>- <a href="https://github.com/RazorSh4rk/random-word-api/">Random Word API by RazorSh4rk</a></li>
     </ul>
     </div>
     </SketchWrapper>
-    {/* <div className={styles.creditItem}>
-    <h2>{t("thanks")}</h2>
-    <p>Il Sommo Paguro Supremo</p>
-    </div> */}
     </div>
     <p id={styles.copyright}>© 2025. {t("copyright")}</p>
     </div>

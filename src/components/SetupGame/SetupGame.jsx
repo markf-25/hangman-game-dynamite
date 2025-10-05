@@ -57,6 +57,20 @@ const SetupGame = ({ startTheGame }) => {
       startTheGame(true)
     }
   }, [playerReady])
+
+  const selectionButton = (value, state, onClick) => (
+  <label key={value}>
+      <SketchButton className={styles.colorButton}
+         id={value}
+         type="button"
+          value={value}
+          shape="circle"
+          fill={{color: "white"}}
+          stroke={{state: state, value: value, color: "indianred"}}
+          style={{background: "none"}}
+          text={value}
+          onClick={() => onClick(value)}/>
+    </label>)
     
     return <>
     {!showPlayersSetup && 
@@ -64,37 +78,11 @@ const SetupGame = ({ startTheGame }) => {
       <div className={styles.setup_nplayers}>
         <h1>{t("select players")}</h1>
         <div className={styles.radio_btns}>
- {MAXPLAYERSANDWORDS.map(num => (
-    <label key={num}>
-      <SketchButton className={styles.colorButton}
-         id={num}
-         type="button"
-          value={num}
-          shape="circle"
-          fill={{color: "white"}}
-          stroke={{state: numPlayers.length, value: num, color: "indianred"}}
-          style={{background: "none"}}
-          text={num}
-          onClick={() => playerSelector(num)}/>
-    </label>
-  ))}
+ {MAXPLAYERSANDWORDS.map(numPlayer => selectionButton(numPlayer, numPlayers.length, playerSelector))}
   </div>
   <h1>{t("select turns")}</h1>
   <div className={styles.radio_btns}>
-  {MAXPLAYERSANDWORDS.map(wordNum => (
-    <label key={wordNum}>
-      <SketchButton className={styles.colorButton}
-          id={wordNum}
-          type="button"
-          value={wordNum}
-          shape="circle"
-          fill={{color: "white"}}
-          stroke={{state: howManyWords, value: wordNum, color: "indianred"}}
-          style={{background: "none"}}
-          text={wordNum}
-          onClick={() => setHowManyWords(wordNum)}/>
-    </label>
-  ))}
+    {MAXPLAYERSANDWORDS.map(wordNum => selectionButton(wordNum, howManyWords, setHowManyWords))}
             </div>
             <SketchButton className={styles.sketch_btn}
               disabled={buttonDisabled}
