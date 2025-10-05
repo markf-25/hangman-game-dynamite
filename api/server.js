@@ -14,7 +14,7 @@ export default async function handler(req, res) {
         word = data[0];
         break;
       case "it":
-        word = data[0].word;
+        word = data[0];
         break;
       default:
         word = data[0];

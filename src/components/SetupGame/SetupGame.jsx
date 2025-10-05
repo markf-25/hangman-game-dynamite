@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { useDispatch } from "react-redux"
 import { clearPlayers } from "../../reducers/player.slice.js"
 import { setupGame, clearGame } from "../../reducers/turn.slice.js"
 import { MAXPLAYERSANDWORDS } from "../../utils/constants.js"
 import PlayerModal from "../PlayerModal/PlayerModal"
 import styles from "./SetupGame.module.css"
+
+import { GameContext } from "../../context/GameProvider"
 
 import SketchWrapper from "../SketchWrapper/SketchWrapper"
 import SketchButton from "../SketchButton/SketchButton"
@@ -23,9 +25,9 @@ const SetupGame = ({ startTheGame }) => {
   const [howManyWords, setHowManyWords] = useState(0)
   const [playerReady, setPlayerReady] = useState(0)
 
-  const everyoneIsReady = numPlayers.length === playerReady
+  const {setView} = useContext(GameContext);
 
-  const [selectedPlayers, setSelectedPlayers] = useState(null);
+  const everyoneIsReady = numPlayers.length === playerReady
 
   const [showPlayersSetup, setShowPlayersSetup] = useState(false)
 
@@ -33,12 +35,12 @@ const SetupGame = ({ startTheGame }) => {
 
 
   const playerSelector = (num) => {
-    setSelectedPlayers(num);
     setNumPlayers(Array.from({ length: num }, (_, index) => index + 1));
   };
 
   const resetSetup = () => {
     setPlayerReady(0)
+    setNumPlayers(0)
     setHowManyWords(0)
     setShowPlayersSetup(false)
   }
@@ -108,14 +110,14 @@ const SetupGame = ({ startTheGame }) => {
     { showPlayersSetup && (
       
     <div className={styles.modalContainer}>
-      <div className={styles.back_btn_div }>
-      <SketchButton fill={{color:"bisque"}} className={styles.sketch_btn} type="button" form="player" onClick={resetSetup} text={t("back")}/>
-      </div>
       <div className={styles.playerModalContainer}>
       {numPlayers.map(player => (<PlayerModal key={player} player={player} ready={setPlayerReady}/>))}
       </div>
       </div>
     )}
+      <div className={styles.back_btn_div }>
+    <SketchButton fill={{color:"bisque"}} className={styles.sketch_btn} type="button" form="player" onClick={showPlayersSetup? resetSetup : ()=> setView("start")} text={t("back")}/>
+      </div>
     </>
 }
 
