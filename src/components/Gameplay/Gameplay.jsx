@@ -21,6 +21,7 @@ const Gameplay = () => {
   const currentPlayerId = currentTurn.currentPlayerId
   const player = useSelector(playerSelectorById(currentPlayerId))
 
+  const whichTurnIsThis = currentTurn.totalReloads - currentTurn.reloadsLeft + 1
     const {setView} = useContext(GameContext);
     const [showScores, setShowScores] = useState(false)
     const [confirm, setConfirm] = useState(false)
@@ -28,9 +29,14 @@ const Gameplay = () => {
    return <div className={styles.gameplay_wrapper}>
 
     <div className={styles.header}>
+    <h3 className={styles.headerTop}>{t("round")} : {whichTurnIsThis <= currentTurn.totalReloads
+    ? `${whichTurnIsThis}/${currentTurn.totalReloads}`
+    : `${currentTurn.totalReloads}/${currentTurn.totalReloads}`}</h3>
+    <div className={styles.headerBottom}>
       <SketchButton fill={{color: "lightcyan"}} style={{background: "none"}} text={t("show scores")} onClick={()=>setShowScores(true)}/>
      <PlayerScore player={player} purpose="gameHeader"/>
       <SketchButton fill={{color: "lightcyan"}} style={{background: "none"}} text={t("show menu")} onClick={()=>setConfirm(true)}/>
+    </div>
     </div>
       <Word currentTurn={currentTurn} currentPlayerId={currentPlayerId}/>
       <div className={styles.keyboardErrorsWrapper}>

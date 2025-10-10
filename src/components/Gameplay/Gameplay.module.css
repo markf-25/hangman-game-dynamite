@@ -8,11 +8,32 @@
 
 .header {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     width: 100%;
-    padding-bottom: 1rem;
+}
+
+.headerTop {
+    font-size: 1.5rem;
+    box-shadow: none;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+}
+
+.headerBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  padding-bottom: 1rem;
+}
+
+.headerBottom > *:nth-child(2) {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .keyboardErrorsWrapper {

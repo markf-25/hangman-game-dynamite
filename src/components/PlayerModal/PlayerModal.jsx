@@ -22,7 +22,9 @@ const PlayerModal = ({player, ready}) => {
 
     const {value: username, handleChange: handleUsernameChange } = useInput(`${t("player")} ${player}`)
 
-    const [isDisabled, setIsDisabled] = useState(false)
+    const [playerIsReady, setPlayerIsReady] = useState(false)
+
+    const isDisabled = playerIsReady || !username.length
 
     const [color, setColor] = useState("#A3C4FF")
 
@@ -34,8 +36,7 @@ const PlayerModal = ({player, ready}) => {
           ref.checked = (color === singleColor)
         }
       })
-    }, [color])
-  
+    }, [color]) 
 
     const setupNewPlayer = (e) => {
 
@@ -54,7 +55,7 @@ const PlayerModal = ({player, ready}) => {
         
         dispatch(setPlayers(payload))
         ready((prev) => prev+1)
-        setIsDisabled(true)
+        setPlayerIsReady(true)
     }
 
 return <>
@@ -69,7 +70,7 @@ return <>
         stroke ="white" 
         id={`username${player}`}
         value={username}
-        onChange={!isDisabled? handleUsernameChange : null}
+        onChange={!playerIsReady? handleUsernameChange : null}
         maxLength={MAXUSERNAMELENGTH}/>
         
         <p style={{color: !username? "red" : "inherit" }}>{username.length}/{MAXUSERNAMELENGTH}</p>
@@ -85,13 +86,13 @@ return <>
           value={singleColor}
           shape="circle"
           stroke={{state: color, value: singleColor, color: "white"}}
-          fill={{ color: singleColor, isDisabled: singleColor !== color && isDisabled }}
-          disabled={isDisabled}
+          fill={{ color: singleColor, isDisabled: singleColor !== color && playerIsReady }}
+          disabled={playerIsReady}
           onClick={()=> setColor(singleColor)}/>)}
   
 </div>
 </div>
-        <SketchButton fill={{isDisabled, color: "white"}} className={styles.ready_btn} type="submit" disabled={isDisabled || !username.length} text={t("ready")}/>
+        <SketchButton fill={{isDisabled, color: "white"}} className={styles.ready_btn} type="submit" disabled={isDisabled} text={t("ready")}/>
       </form>
     </div>
     </SketchWrapper>

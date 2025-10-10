@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import rough from "roughjs"; 
 import styles from "./SketchWrapper.module.css"
 
@@ -97,7 +97,6 @@ const SketchWrapper = ({
         {children}
       </div>
     </div>
-
   </>;
 }
 
