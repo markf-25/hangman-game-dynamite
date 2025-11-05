@@ -7,10 +7,6 @@
     justify-content: center;
     align-items: center;
     transition: 0.2s;
-    color: white;
-    font-size: 30px;
-    text-shadow: black 2px 1px 2px;
-    font-family: "Love Ya Like A Sister", cursive;
 }
 
 .key_btn:hover:enabled {
@@ -22,4 +18,11 @@
     color: rgb(236, 235, 235);
      text-shadow: black 2px 1px 3px;
     cursor: default;
+}
+
+.key_btn p { 
+  color: white;
+    font-size: 30px;
+    text-shadow: black 2px 1px 2px;
+    font-family: "Love Ya Like A Sister", cursive;
 }

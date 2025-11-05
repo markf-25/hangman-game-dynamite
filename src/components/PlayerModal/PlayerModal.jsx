@@ -85,7 +85,7 @@ return <>
          type="button"
           value={singleColor}
           shape="circle"
-          stroke={{state: color, value: singleColor, color: "white"}}
+          stroke={{state: color, value: singleColor, color: "rgba(0, 0, 0, 0.75)"}}
           fill={{ color: singleColor, isDisabled: singleColor !== color && playerIsReady }}
           disabled={playerIsReady}
           onClick={()=> setColor(singleColor)}/>)}

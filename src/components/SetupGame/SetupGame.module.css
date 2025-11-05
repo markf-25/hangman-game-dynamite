@@ -34,10 +34,32 @@ h1 {
     margin: 0.5rem 0rem 0rem 0rem;
 }
 
-.radio_btns {
+.radio_btns_container {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     gap: 1.2rem;
+    
 }
+.radio_btns_container p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.radio_btn {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .back_btn_div {
     display: flex;
     justify-content: center;
@@ -46,7 +68,11 @@ h1 {
     left: 1.5rem;
 }
 .sketch_btn {
-    align-self: flex-start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    min-width: 80px;
     width:fit-content;
     background: transparent;
 }

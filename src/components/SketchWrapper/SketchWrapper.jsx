@@ -10,84 +10,80 @@ const SketchWrapper = ({
   fill,
   dynamicResize = true
 }) => {
-    const svgRef = useRef(null);
+  const svgRef = useRef(null);
   const resizeTimeout = useRef(null);
+
+  const shapeSettings = {
+        fill: fill,
+        stroke: stroke,
+        strokeWidth: 2,
+        roughness: 2.5,
+        bowing: 3,
+        fillStyle: "hachure",
+        hachureGap: 2
+  }
 
   const [screenSize, setScreenSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
   });
 
-  // Aggiorna screenSize quando la finestra viene ridimensionata
   useEffect(() => {
-    if (!dynamicResize) return;
+  if (!dynamicResize) return;
 
-    const handleResize = () => {
-      if (resizeTimeout.current) {
-        clearTimeout(resizeTimeout.current);
-      }
-      resizeTimeout.current = setTimeout(() => {
-        setScreenSize({
-          width: window.innerWidth,
-          height: window.innerHeight,
-        });
-      }, 300);
-    };
+  const handleResize = () => {
+    if (resizeTimeout.current) clearTimeout(resizeTimeout.current);
 
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      if (resizeTimeout.current) clearTimeout(resizeTimeout.current);
-    };
-  }, [dynamicResize]);
+    resizeTimeout.current = setTimeout(() => {
+      setScreenSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }, 300);
+  };
 
-  useEffect(() => {
+  window.addEventListener("resize", handleResize);
+  return () => {
+    window.removeEventListener("resize", handleResize);
+    if (resizeTimeout.current) clearTimeout(resizeTimeout.current);
+  };
+}, [dynamicResize]);
+
+  // Re-rendering every time the window is resized
+
+const drawSketch = () => {
   const svg = svgRef.current;
   const rc = rough.svg(svg);
 
-  // Pulisce prima di ridisegnare
   while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+  const margin = Math.max(
+    5,
+    (shapeSettings.strokeWidth || 1) + Math.round((shapeSettings.roughness || 1) * 3)
+  );
 
   let node;
 
   if (shape) {
-     // Cerchio sketchato
-    const r = Math.min(svg.clientWidth, svg.clientHeight) / 2 - 13;
-    node = rc.circle(
-      svg.clientWidth / 2,
-      svg.clientHeight / 2,
-      2 * r,
-      {
-        stroke,
-        strokeWidth: 2,
-        roughness: 2.5,
-        bowing: 3,
-        fill,
-        fillStyle: "hachure",
-        hachureGap: 2,
-      }
-    );
+    const width = svg.clientWidth;
+    const height = svg.clientHeight;
+    const rx = width / 2 - margin;
+    const ry = height / 2 - margin;
+    const cx = width / 2;
+    const cy = height / 2;
+
+    node = rc.ellipse(cx, cy, rx * 2, ry * 2, shapeSettings);
   } else {
-    // Rettangolo sketchato
-    node = rc.rectangle(
-      5,
-      5,
-      svg.clientWidth - 10,
-      svg.clientHeight - 10,
-      {
-        stroke,
-        strokeWidth: 2,
-        roughness: 2.5,
-        bowing: 3,
-        fill,
-        fillStyle: "hachure",
-        hachureGap: 2,
-      }
-    );
+    const padding = 5;
+    node = rc.rectangle(padding, padding, svg.clientWidth - padding * 2, svg.clientHeight - padding * 2, shapeSettings);
   }
 
   if (node) svg.appendChild(node);
+};
 
+useEffect(() => {
+  const frameId = window.requestAnimationFrame(drawSketch);
+  return () => cancelAnimationFrame(frameId);
 }, [fill, stroke, reload, screenSize]);
 
   return <>
