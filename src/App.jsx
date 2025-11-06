@@ -1,10 +1,10 @@
 import './App.css'
-import LanguageSelectionScreen from './components/LanguageSelectionScreen/LanguageSelectionScreen'
 import StartScreen from './components/StartScreen/StartScreen'
+import LanguageSelectionScreen from './components/LanguageSelectionScreen/LanguageSelectionScreen'
+import Credits from "./components/Credits/Credits"
 import Game from "./components/Game/Game"
 import { useContext } from "react"
 import { GameContext } from "./context/GameProvider"
-import Credits from "./components/Credits/Credits"
 
 
 

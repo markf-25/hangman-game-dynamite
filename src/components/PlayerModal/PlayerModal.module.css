@@ -51,7 +51,8 @@ display: flex;
 
 .ready_btn {
     width:fit-content;
-    margin: -15px;
+    height: 40px;
+    padding: 0px 4px;
     background: transparent;
 }
 

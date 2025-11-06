@@ -10,6 +10,15 @@ import explosion from "../../../public/explosion.png"
 
 const SketchDialog = ({ isOpen, onClose, dialogPurpose = "info", confirmAction, dynamiteExploded, message }) => {
   const { t } = useTranslation();
+
+  const dialogButton = (text, fillColor, onClick) => (
+    <SketchButton
+              text={text}
+              style={{ padding: "2px 10px", margin:"0px" }}
+              fill={{ color: fillColor }}
+              onClick={onClick}
+    />
+  )
   
   useEffect(() => {
     if (dialogPurpose === "turn ended") {
@@ -35,47 +44,28 @@ const SketchDialog = ({ isOpen, onClose, dialogPurpose = "info", confirmAction, 
       case "scoreboard":
         return <>
             <ScoreBoard />
-            <SketchButton
-              text={confirmAction ? t("new game") : t("ok")}
-              style={{ background: "none", padding: "2px 10px" }}
-              fill={{ color: "bisque" }}
-              onClick={confirmAction ? confirmAction : onClose}
-            />
+          {dialogButton ((confirmAction ? t("new game") : t("ok")), "bisque", (confirmAction ? confirmAction : onClose))}
           </>
 
       case "confirm dialog":
         return <>
             <p>{message}</p>
             <div className={styles.confirmDialog}>
-            <SketchButton
-              text={t("ok")}
-              style={{ background: "none", padding: "2px 10px" }}
-              fill={{ color: "bisque" }}
-              onClick={confirmAction}
-            />
-            <SketchButton
-              text={t("cancel")}
-              style={{ background: "none", padding: "2px 10px" }}
-              fill={{ color: "white" }}
-              onClick={onClose}
-            />
+            {dialogButton (t("ok"), "bisque", confirmAction)}
+            {dialogButton (t("cancel"), "white", onClose)}
             </div>
           </>
-          case "info":
+          
+      case "info":
         return <>
         {message}
-        <SketchButton
-              text={t("ok")}
-              style={{ background: "none", padding: "2px 10px" }}
-              fill={{ color: "bisque" }}
-              onClick={onClose}
-            />
+        {dialogButton (t("ok"), "bisque", onClose)}
         </>
     }
   }
 
   return <>
-    <div className={styles.overlay}>
+    <div className={styles.overlay} style={{ background : dialogPurpose==="scoreboard" ? "radial-gradient(circle,rgba(163, 197, 255, 1) 28%, rgba(163, 197, 255, 0.94) 72%, rgba(163, 197, 255, 0.91) 100%)" : "#a3c5ff75" }}>
       {dynamiteExploded && <img className={styles.explosion} src={explosion} />}
       <SketchWrapper fill="white">
         <div className={styles.dialog_container}>

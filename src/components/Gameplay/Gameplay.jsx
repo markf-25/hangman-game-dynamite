@@ -26,6 +26,10 @@ const Gameplay = () => {
     const [showScores, setShowScores] = useState(false)
     const [confirm, setConfirm] = useState(false)
 
+  const actionButton = (onClick, text) => (
+   <SketchButton fill={{color: "lightcyan"}} onClick={()=>onClick(true)} style={{margin: "10px 4px", minWidth: "6rem"}} text={text}/>
+  )
+
    return <div className={styles.gameplay_wrapper}>
 
     <div className={styles.header}>
@@ -33,9 +37,9 @@ const Gameplay = () => {
     ? `${whichTurnIsThis}/${currentTurn.totalReloads}`
     : `${currentTurn.totalReloads}/${currentTurn.totalReloads}`}</h3>
     <div className={styles.headerBottom}>
-      <SketchButton fill={{color: "lightcyan"}} style={{background: "none"}} text={t("show scores")} onClick={()=>setShowScores(true)}/>
+      {actionButton (setShowScores, t("show scores"))}
      <PlayerScore player={player} purpose="gameHeader"/>
-      <SketchButton fill={{color: "lightcyan"}} style={{background: "none"}} text={t("show menu")} onClick={()=>setConfirm(true)}/>
+      {actionButton (setConfirm, t("show menu"))}
     </div>
     </div>
       <Word currentTurn={currentTurn} currentPlayerId={currentPlayerId}/>
