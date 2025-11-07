@@ -28,9 +28,10 @@
 .credits {
   display: flex;
   flex-direction: row;
+  margin-top: 1.5rem;
   width: 90%;
-  gap: 5rem;
-  justify-content: space-between;
+  gap: 0.3rem;
+  justify-content: center;
   align-items: center;
 }
 
@@ -48,6 +49,7 @@ ul {
 .authorsContainer {
   display: flex;
   flex-direction: column;
+  align-self: flex-end;
   gap: 1.5rem;
   line-height: 28px;
   flex-basis: 38%;
@@ -57,9 +59,9 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 2rem;
+  gap: 1rem;
   white-space: pre-line;
-  min-height: 8rem;
+  min-height: 4rem;
   min-width: 400px;
   max-width: fit-content;
   padding: 0.3rem;
@@ -96,12 +98,91 @@ a {
 }
 
 #copyright {
+  z-index: 9999;
+  position: fixed;
+  bottom: 5px;
   font-size: 15px;
   justify-self: flex-end;
 }
 
 /*mobile*/
 @media only screen and (orientation: landscape) and (max-width: 1024px) {
+  .credits_page {
+    margin-top: 0rem;
+    width: 100vw;
+    height: 100vh;
+    padding: 0.3rem;
+    font-size: 10px;
+    gap:0;
+  }
+  .credits_page h2 {
+  font-size: 16px;
+  margin: 0;
+}
+
+  .credits {
+    margin-top: 0px;
+    width: 98vw;
+    height: 90vw;
+    gap: 0;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  .credits p,
+ul {
+  font-size: 16px;
+  margin: 0;
+}
+  .authorsContainer {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.creditItem {
+  padding: 0;
+  gap: 1px;
+  padding: 0;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 30px;
+  max-height: 40px;
+  min-width: 100px;
+  width: 100%;
+}
+.librariesItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  white-space: pre-line;
+  min-width: 100px;
+  max-width: 300px;
+  margin: 20px 40px 20px 0;
+}
+
+.mainList {
+  list-style: none;
+  text-align: left;
+  margin-top: 5px;
+}
+
+.mainList li,
+a {
+  line-height: 25px;
+  line-break: none;
+  font-family: "Love Ya Like A Sister", cursive;
+}
+
+.subList li {
+  line-height: 25px;
+  font-size: 16px;
+}
+}
+/* @media only screen and (orientation: landscape) and (max-width: 1024px) {
   .credits_page {
     margin-top: 0rem;
     width: 90%;
@@ -173,4 +254,4 @@ a {
     font-size: 15px;
     justify-self: flex-end;
   }
-}
+} */

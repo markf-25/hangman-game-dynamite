@@ -13,9 +13,6 @@ const LanguageSelectionScreen = () => {
     const languages = [{ name: "english", id: "en", flag: ukFlag}, { name: "italian", id: "it", flag: italianFlag}]
     const [isPhone, setIsPhone] = useState(window.innerWidth < 768);
 
-    if (isPhone) {
-      console.log('Siamo probabilmente su un cellulare');
-    }
 
   useEffect(() => {
     const handleResize = () => {
