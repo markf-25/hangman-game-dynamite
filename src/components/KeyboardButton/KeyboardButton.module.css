@@ -2,7 +2,8 @@
 
     background-color: transparent;
     height: 3rem;
-    width: 2rem;
+    min-width: 3rem;
+    max-width: 4rem;
     display: flex;
     justify-content: center;
     align-items: center;

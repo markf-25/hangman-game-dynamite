@@ -58,19 +58,25 @@ const SetupGame = ({ startTheGame }) => {
     }
   }, [playerReady]);
 
+
+  const sharedButtonProps = (className, fill, text, onClick) => ({
+    className,
+    fill,
+    text,
+    onClick,
+  });
+
   const selectionButton = (value, state, onClick) => (
     <label key={value}>
       <SketchButton
-        className={styles.radio_btn}
+        {...sharedButtonProps(styles.radio_btn, {color: "white"}, value, (() => onClick(value)))}
+        shape="circle"
         id={value}
         type="button"
         value={value}
-        shape="circle"
-        fill={{ color: "white" }}
         stroke={{ state: state, value: value, color: "indianred" }}
         style={{ background: "none" }}
-        text={value}
-        onClick={() => onClick(value)}
+        isUseHoverActive={false}
       />
     </label>
   );
@@ -93,11 +99,12 @@ const SetupGame = ({ startTheGame }) => {
               )}
             </div>
             <SketchButton
-              className={styles.sketch_btn}
+            {...sharedButtonProps(styles.sketch_btn,
+              { isDisabled: buttonDisabled, color: "lightsalmon" } , 
+              (t("ok")), 
+              (() => setShowPlayersSetup(true)))}
               disabled={buttonDisabled}
-              fill={{ isDisabled: buttonDisabled, color: "lightsalmon" }}
-              text={t("ok")}
-              onClick={() => setShowPlayersSetup(true)}
+              isUseHoverActive={!buttonDisabled}
             />
           </div>
         </SketchWrapper>
@@ -118,12 +125,12 @@ const SetupGame = ({ startTheGame }) => {
       )}
       <div className={styles.back_btn_div}>
         <SketchButton
-          fill={{ color: "bisque" }}
-          className={styles.sketch_btn}
+        {...sharedButtonProps(styles.sketch_btn,
+              {color: "bisque"}, 
+              (t("back")), 
+              (showPlayersSetup ? resetSetup : () => setView("start")))}
           type="button"
           form="player"
-          onClick={showPlayersSetup ? resetSetup : () => setView("start")}
-          text={t("back")}
         />
       </div>
     </>

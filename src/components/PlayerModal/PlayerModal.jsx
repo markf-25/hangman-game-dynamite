@@ -88,6 +88,7 @@ return <>
           stroke={{state: color, value: singleColor, color: "rgba(0, 0, 0, 0.75)"}}
           fill={{ color: singleColor, isDisabled: singleColor !== color && playerIsReady }}
           disabled={playerIsReady}
+          isUseHoverActive={!playerIsReady}
           onClick={()=> setColor(singleColor)}/>)}
   
 </div>

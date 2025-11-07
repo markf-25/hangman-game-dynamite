@@ -1,15 +1,13 @@
 .keyboardWrapper {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    border-radius: 22px;
-    width: fit-content;
-    padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 22px;
+  width: fit-content;
+  max-width: calc((5rem + 0.5rem) * 9);
 }
-
-.prova {
-grid-column: 1 / -1; 
-  justify-self: stretch;
+.keyboardWrapper > * {
+  flex: 0 0 3rem;
 }

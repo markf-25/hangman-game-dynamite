@@ -42,6 +42,7 @@ useEffect(() => {
     <SketchButton 
     text={letter} className={styles.key_btn} 
     disabled={alreadyPressed}
+    isUseHoverActive={!alreadyPressed}
     onClick={userTry} 
     onKeyDown={userTry}
     fill={alreadyPressed? {color: "grey"} : {color:"steelblue"}}
