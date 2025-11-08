@@ -1,7 +1,11 @@
+/* ======================================
+   GLOBAL BASE STYLES
+   ====================================== */
 * {
   box-sizing: border-box;
   font-family: "Gloria Hallelujah", cursive;
 }
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -16,6 +20,41 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ======================================
+   ROOT FONT SIZE SCALING
+   1rem = 20px base design
+   ====================================== */
+html {
+  font-size: 125%; /* 20px base (16px * 1.25) */
+}
+
+@media (max-width: 1024px) {
+  html {
+    font-size: 112.5%; /* 18px */
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 100%; /* 16px */
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 87.5%; /* 14px */
+  }
+}
+
+@media (orientation: landscape) and (max-width: 768px) {
+  html {
+    font-size: 93.75%; /* 15px */
+  }
+}
+
+/* ======================================
+   BODY AND GENERIC ELEMENTS
+   ====================================== */
 body {
   margin: 0;
   display: flex;
@@ -30,15 +69,15 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 1.6rem; /* 32px based on 20px root */
   line-height: 1.1;
 }
 
 button {
-  border-radius: 8px;
+  border-radius: 0.4rem;
   border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem; /* 16px */
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
@@ -47,16 +86,19 @@ button {
   color: var(--text-color);
 }
 
-/*mobile*/
+/* ======================================
+   LANDSCAPE OPTIMIZATION (MOBILE/TABLET)
+   ====================================== */
 @media only screen and (orientation: landscape) and (max-width: 1024px) {
   html {
     justify-self: center;
     width: 100%;
     height: 100%;
   }
+
   body {
-    min-width: 500px;
-    min-height: 300px;
+    min-width: 25rem; /* 500px */
+    min-height: 15rem; /* 300px */
     display: flex;
     width: 100%;
     height: 100%;

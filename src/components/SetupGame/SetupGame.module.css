@@ -21,40 +21,28 @@
 }
 
 .setup_nplayers {
-    height: 85%;
+    min-height: 50vh;
+    max-height: 80vh;
+    width: 20rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     align-content: space-between;
     gap: 1.5rem;
-    margin: 2.5rem 3.5rem 1.2rem;
-}
-
-h1 {
-    margin: 0.5rem 0rem 0rem 0rem;
+    margin: 1.5rem 4rem 1.5rem;
 }
 
 .radio_btns_container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 1.2rem;
-    
-}
-.radio_btns_container p {
-    display: flex;
-    align-items: center;
     justify-content: center;
-    background-color: transparent;
-    margin: 0;
-    padding: 0;
-    width: 2.5rem;
-    height: 2.5rem;
+    gap: 1rem;
+    width: 20rem;
 }
 
 .radio_btn {
-    width: 60px;
-    height: 60px;
+    width: 3rem;
+    height: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -71,8 +59,12 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
-    min-width: 80px;
+    height: 2rem;
+    min-width: 4rem;
     width:fit-content;
     background: transparent;
+}
+
+@media only screen and (orientation: landscape) and (max-width: 1024px) {
+  
 }

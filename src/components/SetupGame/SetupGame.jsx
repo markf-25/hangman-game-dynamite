@@ -36,8 +36,14 @@ const SetupGame = ({ startTheGame }) => {
     setNumPlayers(Array.from({ length: num }, (_, index) => index + 1));
   };
 
-  const resetSetup = () => {
-    setPlayerReady(0);
+  const backToPrev = () => {
+ /*    if(!playerReady) {
+    setShowPlayersSetup(false);
+    } post refactor da provare*/
+    if(playerReady===0 && !showPlayersSetup) {
+      setView("start")
+    }
+    setPlayerReady(0); /*idea di refactor: set diventa prev-1 per permettere la modifica del modale precedente. If playerready === 0, () => setView("start"))*/
     setNumPlayers(0);
     setHowManyWords(0);
     setShowPlayersSetup(false);
@@ -46,7 +52,7 @@ const SetupGame = ({ startTheGame }) => {
   useEffect(() => {
     dispatch(clearPlayers());
     dispatch(clearGame());
-    resetSetup;
+    backToPrev;
   }, []);
 
   useEffect(() => {
@@ -85,7 +91,7 @@ const SetupGame = ({ startTheGame }) => {
     <>
       {!showPlayersSetup && (
         <SketchWrapper fill={wrapperColor}>
-          <div className={styles.setup_nplayers}>
+          <div className={styles.setup_nplayers} >
             <h1>{t("select players")}</h1>
             <div className={styles.radio_btns_container}>
               {MAXPLAYERSANDWORDS.map((numPlayer) =>
@@ -128,7 +134,7 @@ const SetupGame = ({ startTheGame }) => {
         {...sharedButtonProps(styles.sketch_btn,
               {color: "bisque"}, 
               (t("back")), 
-              (showPlayersSetup ? resetSetup : () => setView("start")))}
+              (backToPrev))}
           type="button"
           form="player"
         />
