@@ -23,13 +23,16 @@ export const playerSlice = createSlice({
         player.score = player.score + score
       }
     },
+     removePlayerById: (state, action) => {
+      state.players = state.players.filter(p => p.id !== action.payload);
+    },
     clearPlayers: () => {
       return initialState
     },
   },
 })
 
-export const { setPlayers, updatePlayer, clearPlayers} = playerSlice.actions;
+export const { setPlayers, updatePlayer, removePlayerById, clearPlayers} = playerSlice.actions;
 
 export const playersSelector = (state) => state.player.players;
 

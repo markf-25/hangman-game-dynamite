@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { useDispatch } from "react-redux";
-import { clearPlayers } from "../../reducers/player.slice.js";
+import { removePlayerById, clearPlayers } from "../../reducers/player.slice.js";
 import { setupGame, clearGame } from "../../reducers/turn.slice.js";
 import { MAXPLAYERSANDWORDS } from "../../utils/constants.js";
 import PlayerModal from "../PlayerModal/PlayerModal";
@@ -21,6 +21,7 @@ const SetupGame = ({ startTheGame }) => {
   const dispatch = useDispatch();
 
   const [numPlayers, setNumPlayers] = useState([]);
+  const [currentNumPlayerIndex, setCurrentNumPlayerIndex] = useState(0);
   const [howManyWords, setHowManyWords] = useState(0);
   const [playerReady, setPlayerReady] = useState(0);
 
@@ -36,23 +37,53 @@ const SetupGame = ({ startTheGame }) => {
     setNumPlayers(Array.from({ length: num }, (_, index) => index + 1));
   };
 
+  const currentPlayer = numPlayers[currentNumPlayerIndex]
+
   const backToPrev = () => {
- /*    if(!playerReady) {
+
+  if (currentNumPlayerIndex > 0) {
+    dispatch(removePlayerById(currentPlayer));
+
+    setPlayerReady((prev) => (prev > 0 ? prev - 1 : 0));
+
+    setCurrentNumPlayerIndex((prev) => prev - 1);
+    return;
+  }
+
+  if (currentNumPlayerIndex === 0) {
+    resetEverything();
+    dispatch(clearPlayers());
     setShowPlayersSetup(false);
-    } post refactor da provare*/
-    if(playerReady===0 && !showPlayersSetup) {
-      setView("start")
-    }
-    setPlayerReady(0); /*idea di refactor: set diventa prev-1 per permettere la modifica del modale precedente. If playerready === 0, () => setView("start"))*/
-    setNumPlayers(0);
+    setView("start");
+  }
+  };
+
+  const onClickReadyButton = () => {
+    const hasNextPlayer = currentNumPlayerIndex < numPlayers.length - 1
+    
+    setPlayerReady((prev) => prev + 1);
+          if (hasNextPlayer) {
+            setCurrentNumPlayerIndex((prev) => prev + 1);
+          } else {
+            dispatch(setupGame({
+              totalPlayers: numPlayers.length,
+              totalWords: howManyWords
+            }));
+            startTheGame(true);
+          }
+  }
+
+  const resetEverything = () => {
+    setPlayerReady(0);
+    setNumPlayers([]);
     setHowManyWords(0);
     setShowPlayersSetup(false);
-  };
+  }
 
   useEffect(() => {
     dispatch(clearPlayers());
     dispatch(clearGame());
-    backToPrev;
+    resetEverything();
   }, []);
 
   useEffect(() => {
@@ -117,18 +148,18 @@ const SetupGame = ({ startTheGame }) => {
       )}
 
       {showPlayersSetup && (
-        <div className={styles.modalContainer}>
-          <div className={styles.playerModalContainer}>
-            {numPlayers.map((player) => (
-              <PlayerModal
-                key={player}
-                player={player}
-                ready={setPlayerReady}
-              />
-            ))}
-          </div>
-        </div>
-      )}
+  <div className={styles.modalContainer}>
+    <div className={styles.playerModalContainer}>
+      <PlayerModal
+        key={currentPlayer}
+        player={currentPlayer}
+        ready={() => {
+          onClickReadyButton()
+        }}
+      />
+    </div>
+  </div>
+)}
       <div className={styles.back_btn_div}>
         <SketchButton
         {...sharedButtonProps(styles.sketch_btn,

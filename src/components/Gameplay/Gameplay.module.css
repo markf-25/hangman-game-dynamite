@@ -1,7 +1,8 @@
 .gameplay_wrapper {
     display: flex;
     flex-direction: column;
-    width: fit-content;
+    width: 100%;
+    max-width: 100vw;
     justify-content: center;
     align-items: center;
 }
@@ -44,7 +45,8 @@
     width: 100%;
 }
 hr {
-    height: 2px;
-     width: 80vw; 
-     background-color: steelblue;
+height: 2px;
+  width: 100%;
+  max-width: 80rem;
+  background-color: steelblue;
 }

@@ -1,7 +1,7 @@
 import useInput from "../../hooks/useInput"
 import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux"
-import { setPlayers } from "../../reducers/player.slice.js"
+import { setPlayers, playerSelectorById } from "../../reducers/player.slice.js"
 import { COLORS, MAXUSERNAMELENGTH } from "../../utils/constants.js"
 import styles from "./PlayerModal.module.css"
 
